@@ -20,7 +20,7 @@ class MovieViewModel: ApiClient {
     }
     
     internal func getTopRatedData(completion: @escaping (MovieTopRatedModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeed(from: .movie_topRated, completion: { response in
+        getFeedTopRated(from: .movie_topRated, completion: { response in
             switch response {
             case .success(let successResponse):
                 guard let results = successResponse.self else {return}
@@ -49,7 +49,7 @@ class MovieViewModel: ApiClient {
     }
     
     internal func getPopularData(completion: @escaping (MoviePopularModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeed(from: .movie_popular, completion: { response in
+        getFeedPopular(from: .movie_popular, completion: { response in
             switch response {
             case .success(let successResponse):
                 guard let results = successResponse.self else {return}
@@ -78,7 +78,7 @@ class MovieViewModel: ApiClient {
     }
     
     internal func getNowPlayingData(completion: @escaping (MovieNowPlayingModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeed(from: .movie_nowPlaying, completion: { response in
+        getFeedNowPlaying(from: .movie_nowPlaying, completion: { response in
             switch response {
             case .success(let successResponse):
                 guard let results = successResponse.self else {return}

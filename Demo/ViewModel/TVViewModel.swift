@@ -20,7 +20,7 @@ class TVViewModel: ApiClient {
     }
     
     internal func getTVTopRatedData(completion: @escaping (TVTopRatedModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeed(from: .tv_topRated, completion: { response in
+        getFeedTopRated(from: .tv_topRated, completion: { response in
             switch response {
             case .success(let successResponse):
                 guard let results = successResponse.self else {return}
@@ -49,7 +49,7 @@ class TVViewModel: ApiClient {
     }
     
     internal func getTVTPopularData(completion: @escaping (TVPopularModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeed(from: .tv_popular, completion: { response in
+        getFeedPopular(from: .tv_popular, completion: { response in
             switch response {
             case .success(let successResponse):
                 guard let results = successResponse.self else {return}
