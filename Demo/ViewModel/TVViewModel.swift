@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TVTopRatedViewModel: ApiClient {
+class TVViewModel: ApiClient {
             
     internal let session: URLSession
     
@@ -34,7 +34,7 @@ class TVTopRatedViewModel: ApiClient {
         })
     }
     
-    private func getFeed(from endpointType: Endpoint, completion: @escaping (Result<TVTopRatedModel?, APIError>) -> Void) {
+    private func getFeedTopRated(from endpointType: Endpoint, completion: @escaping (Result<TVTopRatedModel?, APIError>) -> Void) {
         
         let endpoint = endpointType
         let request = endpoint.request
@@ -44,6 +44,35 @@ class TVTopRatedViewModel: ApiClient {
         
         fetch(with: request, decode: { json -> TVTopRatedModel? in
             guard let feedResult = json as? TVTopRatedModel else { return  nil }
+            return feedResult
+        }, completion: completion)
+    }
+    
+    internal func getTVTPopularData(completion: @escaping (TVPopularModel) -> Void, completionHandler: @escaping (String) -> Void) {
+        getFeed(from: .tv_popular, completion: { response in
+            switch response {
+            case .success(let successResponse):
+                guard let results = successResponse.self else {return}
+                completion(results)
+            case .failure(_):
+                #if DEBUG
+                print("Data Fetch Failed")
+                #endif
+                completionHandler("Error")
+            }
+        })
+    }
+    
+    private func getFeedPopular(from endpointType: Endpoint, completion: @escaping (Result<TVPopularModel?, APIError>) -> Void) {
+        
+        let endpoint = endpointType
+        let request = endpoint.request
+        #if DEBUG
+        print(request)
+        #endif
+        
+        fetch(with: request, decode: { json -> TVPopularModel? in
+            guard let feedResult = json as? TVPopularModel else { return  nil }
             return feedResult
         }, completion: completion)
     }
