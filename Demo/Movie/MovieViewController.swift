@@ -9,12 +9,18 @@ import UIKit
 
 class MovieViewController: UIViewController {
 
-    let viewModel = MovieViewModel()
+    @IBOutlet weak var tableView: UITableView!
 
+    let viewModel = MovieViewModel()
+    var topRatedModel: MovieTopRatedModel!
+    var nowPlayingModel: MovieNowPlayingModel!
+    var popularModel: MoviePopularModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel.getTopRatedData(completion: { response in
             //TODO: show data - updateUI
+            self.topRatedModel = response
         }, completionHandler: { error in
 //            TODO: Show error
         })
@@ -22,6 +28,7 @@ class MovieViewController: UIViewController {
         
         self.viewModel.getNowPlayingData(completion: { response in
             //TODO: show data - updateUI
+            self.nowPlayingModel = response
         }, completionHandler: { error in
 //            TODO: Show error
         })
@@ -29,10 +36,62 @@ class MovieViewController: UIViewController {
         
         self.viewModel.getPopularData(completion: { response in
             //TODO: show data - updateUI
+            self.popularModel = response
         }, completionHandler: { error in
 //            TODO: Show error
-        })
-
+        })        
+    }
+    
+    private func tableRegister() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.separatorStyle = .none
+        self.tableView.tableFooterView = UIView()
+        self.tableView.separatorStyle = .none
         
+        tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
+    }
+}
+
+extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
+        cell.selectionStyle = .none
+        
+        switch indexPath.section {
+        case 0:
+            cell.pageSource = .topRated
+            cell.lblTitle.text = "Top Rated"
+            cell.topRatedModel = self.topRatedModel
+            cell.collectionView.reloadData()
+        case 1:
+            cell.pageSource = .nowPlaying
+            cell.lblTitle.text = "Now Playing"
+            cell.nowPlayingModel = self.nowPlayingModel
+            cell.collectionView.reloadData()
+        case 2:
+            cell.pageSource = .popular
+            cell.lblTitle.text = "Popular"
+            cell.popularModel = self.popularModel
+            cell.collectionView.reloadData()
+        default:
+            return UITableViewCell()
+        }
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
