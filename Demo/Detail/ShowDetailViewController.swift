@@ -48,7 +48,7 @@ class ShowDetailViewController: UIViewController {
                 }
             }, completionHandler: { [weak self] error in
                 if let _ = self {
-                    UIManager.shared().errorHandle(viewController: self!, message: "Bir hata oluştu.")
+
                 }
             })
         case .tv:
@@ -73,7 +73,6 @@ class ShowDetailViewController: UIViewController {
                 }
             }, completionHandler: { [weak self] error in
                 if let _ = self {
-                    UIManager.shared().errorHandle(viewController: self!, message: "Bir hata oluştu.")
                 }
             })
         default:

@@ -27,7 +27,7 @@ class MovieViewController: UIViewController {
             }
         }, completionHandler: { [weak self] error in
             if let _ = self {
-                UIManager.shared().errorHandle(viewController: self!, message: "Bir hata oluştu.")
+                UIManager.shared().tabbarErrorHandle(viewController: self!, message: "Bir hata oluştu.")
             }
         })
         
@@ -39,7 +39,7 @@ class MovieViewController: UIViewController {
             }
         }, completionHandler: { [weak self] error in
             if let _ = self {
-                UIManager.shared().errorHandle(viewController: self!, message: "Bir hata oluştu.")
+                UIManager.shared().tabbarErrorHandle(viewController: self!, message: "Bir hata oluştu.")
             }
         })
                 
@@ -51,7 +51,7 @@ class MovieViewController: UIViewController {
             }
         }, completionHandler: { [weak self] error in
             if let _ = self {
-                UIManager.shared().errorHandle(viewController: self!, message: "Bir hata oluştu.")
+                UIManager.shared().tabbarErrorHandle(viewController: self!, message: "Bir hata oluştu.")
             }
         })
     }
