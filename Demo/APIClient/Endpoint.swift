@@ -13,10 +13,14 @@ enum Endpoint {
     case movie_popular
     case tv_topRated
     case tv_popular
-    case movie_detail
+    case movie_detail(Int)
 //    case tv_detail
     case movie_credits
 //    case tv_credits
+    
+//    func id() -> Int {
+//        return
+//    }
 }
 
 extension Endpoint: BaseEndpoint {
@@ -32,9 +36,9 @@ extension Endpoint: BaseEndpoint {
         case .movie_popular: return "/3/movie/popular"
         case .tv_topRated: return "/3/tv/top_rated"
         case .tv_popular: return "/3/tv/popular"
-        case .movie_detail: return "/3/movie/\(MovieViewController.selectedID)"
+        case .movie_detail(let id): return "/3/movie/\(id)"
 //        case .tv_detail: return "/3/tv/\(tv_id)"
-        case .movie_credits: return "/3/movie/\(MovieViewController.selectedID)/credits"
+        case .movie_credits: return "/3/movie/id/credits"
 //        case .tv_credits: return "/3/movie/\(tv_id)/credits"
         }
     }

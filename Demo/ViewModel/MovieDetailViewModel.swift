@@ -21,8 +21,8 @@ class MovieDetailViewModel: ApiClient {
         self.init(configuration: .default)
     }
     
-    internal func getMovieDetailData(completion: @escaping (MovieDetailModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeedMovieDetail(from: .movie_detail, completion: { response in
+    internal func getMovieDetailData(id: Int, completion: @escaping (MovieDetailModel) -> Void, completionHandler: @escaping (String) -> Void) {
+        getFeedMovieDetail(from: .movie_detail(id), completion: { response in
             switch response {
             case .success(let successResponse):
                 self.movieDetailModel = successResponse
