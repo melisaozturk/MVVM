@@ -45,33 +45,41 @@ class MovieCell: UITableViewCell {
 extension MovieCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch pageSource {
-        case .topRated:
-            return self.topRatedModel.results.count
-        case .nowPlaying:
-            return self.nowPlayingModel.results.count
-        case .popular:
-            return self.popularModel.results.count
+        
+        switch section {
+        case 0:
+            if self.topRatedModel != nil {
+                return self.topRatedModel.results.count
+            }
+        case 1:
+            if self.nowPlayingModel != nil {
+                return self.nowPlayingModel.results.count
+            }
+        case 2:
+            if self.popularModel != nil {
+                return self.popularModel.results.count
+            }
         default:
-            break
+            return 0
         }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InternalMovieCell", for: indexPath) as! InternalMovieCell
-        switch pageSource {
-        case .topRated: //TODO
+     
+        switch indexPath.section {
+        case 1: //TODO
             cell.lblTitleShow.text = self.topRatedModel.results[indexPath.row].title
             let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.topRatedModel.results[indexPath.row].posterPath)")
             cell.imgShow.kf.setImage(with: url)
             break
-        case .nowPlaying:
+        case 2:
             cell.lblTitleShow.text = self.nowPlayingModel.results[indexPath.row].title
             let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.nowPlayingModel.results[indexPath.row].posterPath)")
             cell.imgShow.kf.setImage(with: url)
             break
-        case .popular:
+        case 3:
             cell.lblTitleShow.text = self.popularModel.results[indexPath.row].title
             let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.popularModel.results[indexPath.row].posterPath)")
             cell.imgShow.kf.setImage(with: url)

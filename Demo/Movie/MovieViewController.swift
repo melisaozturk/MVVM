@@ -15,7 +15,6 @@ class MovieViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.tableRegister()
         
         self.viewModel.getTopRatedData(completion: { [weak self] response in
@@ -47,8 +46,7 @@ class MovieViewController: UIViewController {
                 //            TODO: Show error
             }
         })
-        
-       
+                       
     }
     
     private func tableRegister() {
@@ -93,9 +91,7 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return UITableViewCell()
         }
-        if self.viewModel.topRatedModel != nil && self.viewModel.nowPlayingModel != nil && self.viewModel.popularModel != nil {
-            cell.collectionView.reloadData()
-        }
+        cell.collectionView.reloadData()
         return cell
     }
     
