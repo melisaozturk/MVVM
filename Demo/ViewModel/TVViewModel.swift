@@ -10,6 +10,8 @@ import Foundation
 class TVViewModel: ApiClient {
             
     internal let session: URLSession
+    var tvTopRatedModel: TVTopRatedModel!
+    var tvPopularModel: TVPopularModel!
     
     init(configuration: URLSessionConfiguration) {
         self.session = URLSession(configuration: configuration)
@@ -23,8 +25,8 @@ class TVViewModel: ApiClient {
         getFeedTopRated(from: .tv_topRated, completion: { response in
             switch response {
             case .success(let successResponse):
-                guard let results = successResponse.self else {return}
-                completion(results)
+                self.tvTopRatedModel = successResponse
+                completion(successResponse!)
             case .failure(_):
                 #if DEBUG
                 print("Data Fetch Failed")
@@ -52,8 +54,8 @@ class TVViewModel: ApiClient {
         getFeedPopular(from: .tv_popular, completion: { response in
             switch response {
             case .success(let successResponse):
-                guard let results = successResponse.self else {return}
-                completion(results)
+                self.tvPopularModel = successResponse
+                completion(successResponse!)
             case .failure(_):
                 #if DEBUG
                 print("Data Fetch Failed")

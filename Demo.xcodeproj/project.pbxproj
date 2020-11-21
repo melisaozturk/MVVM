@@ -135,6 +135,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E0B8C7525694B3100939453 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				1E8C5DCB25686E12006E36C3 /* Cell */,
+				1E8C5CDA25683B79006E36C3 /* Movie */,
+				1E8C5D2925685334006E36C3 /* TV */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
 		1E27721F25658AF500ADCE00 = {
 			isa = PBXGroup;
 			children = (
@@ -160,8 +170,7 @@
 		1E27722A25658AF500ADCE00 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				1E8C5CDA25683B79006E36C3 /* Movie */,
-				1E8C5D2925685334006E36C3 /* TV */,
+				1E0B8C7525694B3100939453 /* Tabbar */,
 				1E8C5D9925685A3C006E36C3 /* Detail */,
 				1E8C5CB825682FA5006E36C3 /* ViewModel */,
 				1E8C5CB925682FAC006E36C3 /* Model */,
@@ -223,8 +232,8 @@
 				1E8C5D2F2568535C006E36C3 /* TVTopRatedModel.swift */,
 				1E8C5D7C2568575F006E36C3 /* TVPopularModel.swift */,
 				1E8C5DB725685D41006E36C3 /* MovieDetailModel.swift */,
-				1E8C5DBC25685E23006E36C3 /* TVDetailModel.swift */,
 				1E8C5DC125685FAE006E36C3 /* MovieCredits.swift */,
+				1E8C5DBC25685E23006E36C3 /* TVDetailModel.swift */,
 				1E8C5DC62568612A006E36C3 /* TVCredits.swift */,
 			);
 			path = Model;
@@ -251,7 +260,6 @@
 		1E8C5CDA25683B79006E36C3 /* Movie */ = {
 			isa = PBXGroup;
 			children = (
-				1E8C5DCB25686E12006E36C3 /* Cell */,
 				1E8C5D3A256853A6006E36C3 /* MovieViewController.swift */,
 			);
 			path = Movie;

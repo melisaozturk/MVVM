@@ -12,14 +12,46 @@
         <!--TV-->
         <scene sceneID="MoM-xY-lSN">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Mz3-Dh-qOt" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TVViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mz3-Dh-qOt" customClass="TVViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o5S-VA-D4v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Axp-tk-K3x">
+                                <rect key="frame" x="0.0" y="44" width="414" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="jBa-wf-2eR"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="TopRated"/>
+                                    <segment title="Popular"/>
+                                </segments>
+                                <connections>
+                                    <action selector="actionSegmentedControl:" destination="Mz3-Dh-qOt" eventType="valueChanged" id="rg4-je-jUA"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="csw-Kl-doD">
+                                <rect key="frame" x="0.0" y="84" width="414" height="729"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qht-Cn-kK7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qht-Cn-kK7" firstAttribute="trailing" secondItem="Axp-tk-K3x" secondAttribute="trailing" id="64R-Bb-twK"/>
+                            <constraint firstItem="qht-Cn-kK7" firstAttribute="bottom" secondItem="csw-Kl-doD" secondAttribute="bottom" id="9Js-ah-CPz"/>
+                            <constraint firstItem="Axp-tk-K3x" firstAttribute="top" secondItem="qht-Cn-kK7" secondAttribute="top" id="KEc-7F-6OC"/>
+                            <constraint firstItem="Axp-tk-K3x" firstAttribute="leading" secondItem="qht-Cn-kK7" secondAttribute="leading" id="Whg-IY-r1G"/>
+                            <constraint firstItem="csw-Kl-doD" firstAttribute="top" secondItem="Axp-tk-K3x" secondAttribute="bottom" id="XNd-2A-JmW"/>
+                            <constraint firstItem="qht-Cn-kK7" firstAttribute="trailing" secondItem="csw-Kl-doD" secondAttribute="trailing" id="jUn-5U-TWL"/>
+                            <constraint firstItem="csw-Kl-doD" firstAttribute="leading" secondItem="qht-Cn-kK7" secondAttribute="leading" id="ref-g5-dH8"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="TV" id="0Zd-gd-pwW"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="Axp-tk-K3x" id="grc-Vc-Kts"/>
+                        <outlet property="tableView" destination="csw-Kl-doD" id="i0B-4g-HsA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ye-05-IY8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

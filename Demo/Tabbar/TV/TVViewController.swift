@@ -1,5 +1,5 @@
 //
-//  MovieTopRatedViewController.swift
+//  TVViewController.swift
 //  Demo
 //
 //  Created by melisa öztürk on 20.11.2020.
@@ -7,18 +7,18 @@
 
 import UIKit
 
-class MovieViewController: UIViewController {
-    
+class TVViewController: UIViewController {
+
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
-    let viewModel = MovieViewModel()
+    private let viewModel = TVViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableRegister()
         
-        self.viewModel.getTopRatedData(completion: { [weak self] response in
+        self.viewModel.getTVTopRatedData(completion: { [weak self] response in
             if let _ = self {
                 self!.tableView.reloadData()
             }
@@ -28,7 +28,7 @@ class MovieViewController: UIViewController {
             }
         })
         
-        self.viewModel.getNowPlayingData(completion: { [weak self] response in
+        self.viewModel.getTVTPopularData(completion: { [weak self] response in
             if let _ = self {
                 self!.tableView.reloadData()
             }
@@ -37,25 +37,12 @@ class MovieViewController: UIViewController {
                 //            TODO: Show error
             }
         })
-        
-        
-        self.viewModel.getPopularData(completion: { [weak self] response in
-            if let _ = self {
-                self!.tableView.reloadData()
-            }
-        }, completionHandler: { [weak self] error in
-            if let _ = self {
-                //            TODO: Show error
-            }
-        })
-        
     }
     
     private func tableRegister() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
-//        self.tableView.tableFooterView = UIView()
         self.tableView.separatorStyle = .none
         
         self.tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
@@ -67,28 +54,23 @@ class MovieViewController: UIViewController {
             self.tableView.reloadData()
         case 1:
             self.tableView.reloadData()
-        case 2:
-            self.tableView.reloadData()
         default: break
         }
     }
 }
 
-extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
+
+extension TVViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.segmentedControl.selectedSegmentIndex {
         case 0:
-            if self.viewModel.topRatedModel != nil {
-                return self.viewModel.topRatedModel.results.count
+            if self.viewModel.tvTopRatedModel != nil {
+                return self.viewModel.tvTopRatedModel.results.count
             }
         case 1:
-            if self.viewModel.nowPlayingModel != nil {
-                return self.viewModel.nowPlayingModel.results.count
-            }
-        case 2:
-            if self.viewModel.popularModel != nil {
-                return self.viewModel.popularModel.results.count
+            if self.viewModel.tvPopularModel != nil {
+                return self.viewModel.tvPopularModel.results.count
             }
         default:
             return 0
@@ -103,13 +85,10 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch self.segmentedControl.selectedSegmentIndex {
         case 0:
-            //"Top Rated"
-            cell.lblTitle.text = self.viewModel.topRatedModel.results[indexPath.row].title
+            cell.lblTitle.text = self.viewModel.tvTopRatedModel.results[indexPath.row].name
             break
         case 1:
-            cell.lblTitle.text = self.viewModel.nowPlayingModel.results[indexPath.row].title
-        case 2:
-            cell.lblTitle.text = self.viewModel.popularModel.results[indexPath.row].title
+            cell.lblTitle.text = self.viewModel.tvPopularModel.results[indexPath.row].name
         default:
             break
         }
