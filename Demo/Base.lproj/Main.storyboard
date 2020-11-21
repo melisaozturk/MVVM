@@ -34,27 +34,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V1Z-vt-j8D">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="729"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="34b-wH-Eei">
+                                <rect key="frame" x="0.0" y="44" width="414" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="eFA-mu-OC9"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="TopRated"/>
+                                    <segment title="NowPlaying"/>
+                                    <segment title="Popular"/>
+                                </segments>
+                                <connections>
+                                    <action selector="actionSegmentedControl:" destination="u2i-Pn-cKB" eventType="valueChanged" id="GUQ-1W-w7r"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lQu-Xv-pEY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="34b-wH-Eei" firstAttribute="leading" secondItem="lQu-Xv-pEY" secondAttribute="leading" id="5Ed-fj-bMO"/>
+                            <constraint firstItem="V1Z-vt-j8D" firstAttribute="top" secondItem="34b-wH-Eei" secondAttribute="bottom" id="Dl5-2c-FY3"/>
+                            <constraint firstItem="34b-wH-Eei" firstAttribute="top" secondItem="lQu-Xv-pEY" secondAttribute="top" id="KKB-WR-75a"/>
                             <constraint firstItem="V1Z-vt-j8D" firstAttribute="leading" secondItem="lQu-Xv-pEY" secondAttribute="leading" id="RN1-y4-EAM"/>
-                            <constraint firstItem="V1Z-vt-j8D" firstAttribute="top" secondItem="lQu-Xv-pEY" secondAttribute="top" id="eKI-MM-pFQ"/>
                             <constraint firstItem="lQu-Xv-pEY" firstAttribute="trailing" secondItem="V1Z-vt-j8D" secondAttribute="trailing" id="k70-2Q-3aR"/>
+                            <constraint firstItem="lQu-Xv-pEY" firstAttribute="trailing" secondItem="34b-wH-Eei" secondAttribute="trailing" id="rmG-cm-HR3"/>
                             <constraint firstItem="lQu-Xv-pEY" firstAttribute="bottom" secondItem="V1Z-vt-j8D" secondAttribute="bottom" id="xUx-UU-bhG"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Movie" id="Tyk-cP-Nib"/>
                     <connections>
+                        <outlet property="segmentedControl" destination="34b-wH-Eei" id="2PG-tj-lIR"/>
                         <outlet property="tableView" destination="V1Z-vt-j8D" id="6Be-N4-fnu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jq2-q0-tIY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2865" y="-699"/>
+            <point key="canvasLocation" x="2863.768115942029" y="-699.10714285714278"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="x6a-08-Zj7">

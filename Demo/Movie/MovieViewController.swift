@@ -8,9 +8,10 @@
 import UIKit
 
 class MovieViewController: UIViewController {
-
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
-
+    
     let viewModel = MovieViewModel()
     
     override func viewDidLoad() {
@@ -36,7 +37,8 @@ class MovieViewController: UIViewController {
                 //            TODO: Show error
             }
         })
-
+        
+        
         self.viewModel.getPopularData(completion: { [weak self] response in
             if let _ = self {
                 self!.tableView.reloadData()
@@ -46,28 +48,52 @@ class MovieViewController: UIViewController {
                 //            TODO: Show error
             }
         })
-                       
+        
     }
     
     private func tableRegister() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
-        self.tableView.tableFooterView = UIView()
+//        self.tableView.tableFooterView = UIView()
         self.tableView.separatorStyle = .none
         
         self.tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
+    }
+    
+    @IBAction func actionSegmentedControl(_ sender: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            self.tableView.reloadData()
+        case 1:
+            self.tableView.reloadData()
+        case 2:
+            self.tableView.reloadData()
+        default: break
+        }
     }
 }
 
 extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 1
+        switch self.segmentedControl.selectedSegmentIndex {
+        case 0:
+            if self.viewModel.topRatedModel != nil {
+                return self.viewModel.topRatedModel.results.count
+            }
+        case 1:
+            if self.viewModel.nowPlayingModel != nil {
+                return self.viewModel.nowPlayingModel.results.count
+            }
+        case 2:
+            if self.viewModel.popularModel != nil {
+                return self.viewModel.popularModel.results.count
+            }
+        default:
+            return 0
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,23 +101,18 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         cell.selectionStyle = .none
         
-        switch indexPath.section {
+        switch self.segmentedControl.selectedSegmentIndex {
         case 0:
-            cell.pageSource = .topRated
-            cell.lblTitle.text = "Top Rated"
-            cell.topRatedModel = self.viewModel.topRatedModel
+            //"Top Rated"
+            cell.lblTitle.text = self.viewModel.topRatedModel.results[indexPath.row].title
+            break
         case 1:
-            cell.pageSource = .nowPlaying
-            cell.lblTitle.text = "Now Playing"
-            cell.nowPlayingModel = self.viewModel.nowPlayingModel
+            cell.lblTitle.text = self.viewModel.nowPlayingModel.results[indexPath.row].title
         case 2:
-            cell.pageSource = .popular
-            cell.lblTitle.text = "Popular"
-            cell.popularModel = self.viewModel.popularModel
+            cell.lblTitle.text = self.viewModel.popularModel.results[indexPath.row].title
         default:
-            return UITableViewCell()
+            break
         }
-        cell.collectionView.reloadData()
         return cell
     }
     
