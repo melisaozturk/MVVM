@@ -22,7 +22,7 @@ struct TVCreditsCast: Decodable {
     let character, creditID: String
     let order: Int
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case adult, gender, id
         case knownForDepartment = "known_for_department"
         case name

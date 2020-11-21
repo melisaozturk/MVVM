@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct MovieTopRatedModel: Decodable {
+struct MovieTopRatedModel: Codable {
     let page, totalResults, totalPages: Int
     let results: [TopRatedResult]
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case page
         case totalResults = "total_results"
         case totalPages = "total_pages"
@@ -19,7 +19,7 @@ struct MovieTopRatedModel: Decodable {
     }
 }
 
-struct TopRatedResult: Decodable {
+struct TopRatedResult: Codable {
     let popularity: Double
     let voteCount: Int
     let video: Bool
@@ -32,7 +32,7 @@ struct TopRatedResult: Decodable {
     let voteAverage: Double
     let overview, releaseDate: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case popularity
         case voteCount = "vote_count"
         case video

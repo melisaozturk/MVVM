@@ -26,7 +26,7 @@ struct MovieCast: Decodable {
     let department: MovieDepartment?
     let job: String?
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case adult, gender, id
         case knownForDepartment = "known_for_department"
         case name

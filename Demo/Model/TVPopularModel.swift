@@ -11,7 +11,7 @@ struct TVPopularModel: Decodable {
     let page, totalResults, totalPages: Int
     let results: [TVPopularResult]
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case page
         case totalResults = "total_results"
         case totalPages = "total_pages"
@@ -33,7 +33,7 @@ struct TVPopularResult: Decodable {
     let voteAverage: Double
     let overview, posterPath: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case originalName = "original_name"
         case genreIDS = "genre_ids"
         case name, popularity

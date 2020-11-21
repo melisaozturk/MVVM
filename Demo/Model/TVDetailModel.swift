@@ -34,7 +34,7 @@ struct TVDetailModel: Decodable {
     let voteAverage: Double
     let voteCount: Int
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case backdropPath = "backdrop_path"
         case createdBy = "created_by"
         case episodeRunTime = "episode_run_time"
@@ -69,7 +69,7 @@ struct TVCreatedBy: Decodable {
     let creditID, name: String
     let profilePath: TVJSONNull?
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id
         case creditID = "credit_id"
         case name
@@ -87,7 +87,7 @@ struct TVNetwork: Decodable {
     let id: Int
     let logoPath, originCountry: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case name, id
         case logoPath = "logo_path"
         case originCountry = "origin_country"
@@ -97,7 +97,7 @@ struct TVNetwork: Decodable {
 struct TVProductionCountry: Decodable {
     let iso3166_1, name: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case iso3166_1 = "iso_3166_1"
         case name
     }
@@ -107,7 +107,7 @@ struct TVProductionCountry: Decodable {
 struct TVSpokenLanguage: Decodable {
     let englishName, iso639_1, name: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case englishName = "english_name"
         case iso639_1 = "iso_639_1"
         case name

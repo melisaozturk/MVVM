@@ -1,11 +1,12 @@
 //
-//  MoviesCell.swift
+//  MovieCell.swift
 //  Demo
 //
 //  Created by melisa öztürk on 21.11.2020.
 //
 
 import UIKit
+import Kingfisher
 
 class MovieCell: UITableViewCell {
 

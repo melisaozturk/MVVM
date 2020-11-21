@@ -13,7 +13,7 @@ struct MovieNowPlayingModel: Decodable {
     let dates: NowPlayingDates
     let totalPages: Int
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case results, page
         case totalResults = "total_results"
         case dates
@@ -40,7 +40,7 @@ struct NowPlayingResult: Decodable {
     let voteAverage: Double
     let overview, releaseDate: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case popularity
         case voteCount = "vote_count"
         case video

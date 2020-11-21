@@ -18,28 +18,37 @@ class MovieViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.getTopRatedData(completion: { response in
-            //TODO: show data - updateUI
-            self.topRatedModel = response
-        }, completionHandler: { error in
+        self.tableRegister()
+        
+        self.viewModel.getTopRatedData(completion: { [weak self] response in
+            if let _ = self {return}
+            self!.topRatedModel = response
+        }, completionHandler: { [weak self] error in
+            if let _ = self {return}
 //            TODO: Show error
         })
         
         
-        self.viewModel.getNowPlayingData(completion: { response in
-            //TODO: show data - updateUI
-            self.nowPlayingModel = response
-        }, completionHandler: { error in
+        self.viewModel.getNowPlayingData(completion: { [weak self] response in
+            if let _ = self {return}
+            self!.nowPlayingModel = response
+        }, completionHandler: { [weak self] error in
+            if let _ = self {return}
+//            TODO: Show error
+        })
+
+        self.viewModel.getPopularData(completion: { [weak self] response in
+            if let _ = self {return}
+            self!.popularModel = response
+        }, completionHandler: { [weak self] error in
+            if let _ = self {return}
 //            TODO: Show error
         })
         
-        
-        self.viewModel.getPopularData(completion: { response in
-            //TODO: show data - updateUI
-            self.popularModel = response
-        }, completionHandler: { error in
-//            TODO: Show error
-        })        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+       
     }
     
     private func tableRegister() {
@@ -49,7 +58,7 @@ class MovieViewController: UIViewController {
         self.tableView.tableFooterView = UIView()
         self.tableView.separatorStyle = .none
         
-        tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
+        self.tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
     }
 }
 
