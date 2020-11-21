@@ -6,7 +6,7 @@ target 'Demo' do
   use_frameworks!
 
   # Pods for Demo
-  pod 'Kingfisher'
+  pod 'Kingfisher', '~> 4.0'
 
   target 'DemoTests' do
     inherit! :search_paths
