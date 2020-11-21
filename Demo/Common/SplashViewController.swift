@@ -20,6 +20,9 @@ class SplashViewController: UIViewController {
     }
     
     @objc func showView(){
-        self.performSegue(withIdentifier: "tabbarSegue", sender: self)
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabbarController") as? TabbarController {
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+//        self.performSegue(withIdentifier: "tabbarSegue", sender: self)
     }
 }

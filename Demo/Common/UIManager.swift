@@ -45,7 +45,7 @@ class UIManager: UIManagerDelegate {
     func errorHandle(viewController: UIViewController, message: String) {
         let alert = UIAlertController(title: "Uyarı", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: { _ in
-            viewController.dismiss(animated: true, completion: nil)
+            viewController.navigationController?.popViewController(animated: true)            
         })
         alert.addAction(action)
         viewController.present(alert, animated: true, completion: nil)

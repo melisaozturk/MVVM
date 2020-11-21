@@ -50,8 +50,8 @@ class MovieDetailViewModel: ApiClient {
         }, completion: completion)
     }
  
-    internal func getMovieCreditsData(completion: @escaping (MovieCreditsModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeedMovieCredits(from: .movie_credits, completion: { response in
+    internal func getMovieCreditsData(id: Int, completion: @escaping (MovieCreditsModel) -> Void, completionHandler: @escaping (String) -> Void) {
+        getFeedMovieCredits(from: .movie_credits(id), completion: { response in
             switch response {
             case .success(let successResponse):
                 self.movieCreditsModel = successResponse

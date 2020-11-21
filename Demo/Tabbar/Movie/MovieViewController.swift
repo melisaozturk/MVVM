@@ -18,7 +18,7 @@ class MovieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableRegister()
-        
+
         UIManager.shared().showLoading(view: self.view)
         self.viewModel.getTopRatedData(completion: { [weak self] response in
             UIManager.shared().removeLoading(view: self!.view)
@@ -56,6 +56,12 @@ class MovieViewController: UIViewController {
         })
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+        
     private func tableRegister() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -142,7 +148,8 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
                 
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController {
             viewController.id = id
-            self.present(viewController, animated: true, completion: nil)            
+            self.navigationController?.pushViewController(viewController, animated: true)
+//            self.present(viewController, animated: true, completion: nil)
         }
     }
     

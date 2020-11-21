@@ -14,13 +14,9 @@ enum Endpoint {
     case tv_topRated
     case tv_popular
     case movie_detail(Int)
-//    case tv_detail
-    case movie_credits
-//    case tv_credits
-    
-//    func id() -> Int {
-//        return
-//    }
+    case tv_detail(Int)
+    case movie_credits(Int)
+    case tv_credits(Int)
 }
 
 extension Endpoint: BaseEndpoint {
@@ -37,9 +33,9 @@ extension Endpoint: BaseEndpoint {
         case .tv_topRated: return "/3/tv/top_rated"
         case .tv_popular: return "/3/tv/popular"
         case .movie_detail(let id): return "/3/movie/\(id)"
-//        case .tv_detail: return "/3/tv/\(tv_id)"
-        case .movie_credits: return "/3/movie/id/credits"
-//        case .tv_credits: return "/3/movie/\(tv_id)/credits"
+        case .tv_detail(let id): return "/3/tv/\(id)"
+        case .movie_credits(let id): return "/3/movie/\(id)/credits"
+        case .tv_credits(let id): return "/3/movie/\(id)/credits"
         }
     }
 
@@ -47,7 +43,7 @@ extension Endpoint: BaseEndpoint {
         switch self {
         case .movie_topRated, .movie_nowPlaying, .movie_popular, .tv_topRated, .tv_popular:
             return [URLQueryItem(name: "api_key", value:"45a4fdf097060d7804046ad3fe9098c3"), URLQueryItem(name: "language", value:"en-US"), URLQueryItem(name: "page", value: "1")]
-        case .movie_detail, .movie_credits://, .tv_detail, .tv_credits:
+        case .movie_detail, .movie_credits, .tv_detail, .tv_credits:
             return[URLQueryItem(name: "api_key", value:"45a4fdf097060d7804046ad3fe9098c3"), URLQueryItem(name: "language", value:"en-US")]
         }
     }

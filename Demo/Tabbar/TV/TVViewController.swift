@@ -18,7 +18,7 @@ class TVViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableRegister()
-        
+
         UIManager.shared().showLoading(view: self.view)
         self.viewModel.getTVTopRatedData(completion: { [weak self] response in
             UIManager.shared().removeLoading(view: self!.view)
@@ -42,6 +42,11 @@ class TVViewController: UIViewController {
                 UIManager.shared().errorHandle(viewController: self!, message: "Bir hata oluştu.")
             }
         })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     private func tableRegister() {

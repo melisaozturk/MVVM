@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieTopRatedModel: Codable {
+struct MovieTopRatedModel: Decodable {
     let page, totalResults, totalPages: Int
     let results: [TopRatedResult]
 
@@ -19,7 +19,7 @@ struct MovieTopRatedModel: Codable {
     }
 }
 
-struct TopRatedResult: Codable {
+struct TopRatedResult: Decodable {
     let popularity: Double
     let voteCount: Int
     let video: Bool
