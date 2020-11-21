@@ -9,7 +9,7 @@ import Foundation
 
 struct TVTopRatedModel: Decodable {
     let page, totalResults, totalPages: Int
-    let results: [TVTopRatedResult]
+    let results: [TVTopRatedResult]?
 
     private enum CodingKeys: String, CodingKey {
         case page

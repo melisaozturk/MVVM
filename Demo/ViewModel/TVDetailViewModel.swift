@@ -21,7 +21,7 @@ class TVDetailViewModel: ApiClient {
         self.init(configuration: .default)
     }
     
-    internal func getMovieDetailData(id: Int, completion: @escaping (TVDetailModel) -> Void, completionHandler: @escaping (String) -> Void) {
+    internal func getTVDetailData(id: Int, completion: @escaping (TVDetailModel) -> Void, completionHandler: @escaping (String) -> Void) {
         getFeedTVDetail(from: .tv_detail(id), completion: { response in
             switch response {
             case .success(let successResponse):
@@ -50,7 +50,7 @@ class TVDetailViewModel: ApiClient {
         }, completion: completion)
     }
     
-    internal func getMovieCreditsData(id: Int, completion: @escaping (TVCreditsModel) -> Void, completionHandler: @escaping (String) -> Void) {
+    internal func getTVCreditsData(id: Int, completion: @escaping (TVCreditsModel) -> Void, completionHandler: @escaping (String) -> Void) {
         getFeedTVCredits(from: .tv_credits(id), completion: { response in
             switch response {
             case .success(let successResponse):

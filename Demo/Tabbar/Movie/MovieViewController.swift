@@ -146,10 +146,10 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
             break
         }
                 
-        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController {
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShowDetailViewController") as? ShowDetailViewController {
             viewController.id = id
+            viewController.pageSource = .movie
             self.navigationController?.pushViewController(viewController, animated: true)
-//            self.present(viewController, animated: true, completion: nil)
         }
     }
     

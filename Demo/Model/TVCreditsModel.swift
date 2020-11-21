@@ -8,270 +8,387 @@
 import Foundation
 
 struct TVCreditsModel: Decodable {
-    let cast: [TVCreditsCast]
-    let crew: [TVCreditsJSONAny]
-    let id: Int
+
+            let cast : [TVCreditsCast]?
+            let crew : [TVCreditsCrew]?
+            let id : Int?
+
+            enum CodingKeys: String, CodingKey {
+                    case cast = "cast"
+                    case crew = "crew"
+                    case id = "id"
+            }
+        
+            init(from decoder: Decoder) throws {
+                    let values = try decoder.container(keyedBy: CodingKeys.self)
+                    cast = try values.decodeIfPresent([TVCreditsCast].self, forKey: .cast)
+                    crew = try values.decodeIfPresent([TVCreditsCrew].self, forKey: .crew)
+                    id = try values.decodeIfPresent(Int.self, forKey: .id)
+            }
+
+    }
+
+
+struct TVCreditsCrew: Decodable {
+
+        let adult : Bool?
+        let creditId : String?
+        let department : String?
+        let gender : Int?
+        let id : Int?
+        let job : String?
+        let knownForDepartment : String?
+        let name : String?
+        let originalName : String?
+        let popularity : Float?
+        let profilePath : String?
+
+        enum CodingKeys: String, CodingKey {
+                case adult = "adult"
+                case creditId = "credit_id"
+                case department = "department"
+                case gender = "gender"
+                case id = "id"
+                case job = "job"
+                case knownForDepartment = "known_for_department"
+                case name = "name"
+                case originalName = "original_name"
+                case popularity = "popularity"
+                case profilePath = "profile_path"
+        }
+    
+        init(from decoder: Decoder) throws {
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                adult = try values.decodeIfPresent(Bool.self, forKey: .adult)
+                creditId = try values.decodeIfPresent(String.self, forKey: .creditId)
+                department = try values.decodeIfPresent(String.self, forKey: .department)
+                gender = try values.decodeIfPresent(Int.self, forKey: .gender)
+                id = try values.decodeIfPresent(Int.self, forKey: .id)
+                job = try values.decodeIfPresent(String.self, forKey: .job)
+                knownForDepartment = try values.decodeIfPresent(String.self, forKey: .knownForDepartment)
+                name = try values.decodeIfPresent(String.self, forKey: .name)
+                originalName = try values.decodeIfPresent(String.self, forKey: .originalName)
+                popularity = try values.decodeIfPresent(Float.self, forKey: .popularity)
+                profilePath = try values.decodeIfPresent(String.self, forKey: .profilePath)
+        }
+
 }
 
 struct TVCreditsCast: Decodable {
-    let adult: Bool
-    let gender, id: Int
-    let knownForDepartment, name, originalName: String
-    let popularity: Double
-    let profilePath: TVCreditsJSONNull?
-    let character, creditID: String
-    let order: Int
 
-    private enum CodingKeys: String, CodingKey {
-        case adult, gender, id
-        case knownForDepartment = "known_for_department"
-        case name
-        case originalName = "original_name"
-        case popularity
-        case profilePath = "profile_path"
-        case character
-        case creditID = "credit_id"
-        case order
-    }
+        let adult : Bool?
+        let castId : Int?
+        let character : String?
+        let creditId : String?
+        let gender : Int?
+        let id : Int?
+        let knownForDepartment : String?
+        let name : String?
+        let order : Int?
+        let originalName : String?
+        let popularity : Float?
+        let profilePath : String?
+
+        enum CodingKeys: String, CodingKey {
+                case adult = "adult"
+                case castId = "cast_id"
+                case character = "character"
+                case creditId = "credit_id"
+                case gender = "gender"
+                case id = "id"
+                case knownForDepartment = "known_for_department"
+                case name = "name"
+                case order = "order"
+                case originalName = "original_name"
+                case popularity = "popularity"
+                case profilePath = "profile_path"
+        }
+    
+        init(from decoder: Decoder) throws {
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                adult = try values.decodeIfPresent(Bool.self, forKey: .adult)
+                castId = try values.decodeIfPresent(Int.self, forKey: .castId)
+                character = try values.decodeIfPresent(String.self, forKey: .character)
+                creditId = try values.decodeIfPresent(String.self, forKey: .creditId)
+                gender = try values.decodeIfPresent(Int.self, forKey: .gender)
+                id = try values.decodeIfPresent(Int.self, forKey: .id)
+                knownForDepartment = try values.decodeIfPresent(String.self, forKey: .knownForDepartment)
+                name = try values.decodeIfPresent(String.self, forKey: .name)
+                order = try values.decodeIfPresent(Int.self, forKey: .order)
+                originalName = try values.decodeIfPresent(String.self, forKey: .originalName)
+                popularity = try values.decodeIfPresent(Float.self, forKey: .popularity)
+                profilePath = try values.decodeIfPresent(String.self, forKey: .profilePath)
+        }
+
 }
 
-// MARK: - Encode/decode helpers
-class TVCreditsJSONNull: Decodable, Hashable {
 
-    public static func == (lhs: TVCreditsJSONNull, rhs: TVCreditsJSONNull) -> Bool {
-        return true
-    }
-
-    public var hashValue: Int {
-        return 0
-    }
-
-    public init() {}
-
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if !container.decodeNil() {
-            throw DecodingError.typeMismatch(TVCreditsJSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
-        }
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encodeNil()
-    }
-}
-
-class TVJSONCodingKey: CodingKey {
-    let key: String
-
-    required init?(intValue: Int) {
-        return nil
-    }
-
-    required init?(stringValue: String) {
-        key = stringValue
-    }
-
-    var intValue: Int? {
-        return nil
-    }
-
-    var stringValue: String {
-        return key
-    }
-}
-
-class TVCreditsJSONAny: Decodable {
-
-    let value: Any
-
-    static func decodingError(forCodingPath codingPath: [CodingKey]) -> DecodingError {
-        let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Cannot decode JSONAny")
-        return DecodingError.typeMismatch(TVJSONAny.self, context)
-    }
-
-    static func encodingError(forValue value: Any, codingPath: [CodingKey]) -> EncodingError {
-        let context = EncodingError.Context(codingPath: codingPath, debugDescription: "Cannot encode JSONAny")
-        return EncodingError.invalidValue(value, context)
-    }
-
-    static func decode(from container: SingleValueDecodingContainer) throws -> Any {
-        if let value = try? container.decode(Bool.self) {
-            return value
-        }
-        if let value = try? container.decode(Int64.self) {
-            return value
-        }
-        if let value = try? container.decode(Double.self) {
-            return value
-        }
-        if let value = try? container.decode(String.self) {
-            return value
-        }
-        if container.decodeNil() {
-            return TVJSONNull()
-        }
-        throw decodingError(forCodingPath: container.codingPath)
-    }
-
-    static func decode(from container: inout UnkeyedDecodingContainer) throws -> Any {
-        if let value = try? container.decode(Bool.self) {
-            return value
-        }
-        if let value = try? container.decode(Int64.self) {
-            return value
-        }
-        if let value = try? container.decode(Double.self) {
-            return value
-        }
-        if let value = try? container.decode(String.self) {
-            return value
-        }
-        if let value = try? container.decodeNil() {
-            if value {
-                return TVJSONNull()
-            }
-        }
-        if var container = try? container.nestedUnkeyedContainer() {
-            return try decodeArray(from: &container)
-        }
-        if var container = try? container.nestedContainer(keyedBy: JSONCodingKey.self) {
-            return try decodeDictionary(from: &container)
-        }
-        throw decodingError(forCodingPath: container.codingPath)
-    }
-
-    static func decode(from container: inout KeyedDecodingContainer<JSONCodingKey>, forKey key: JSONCodingKey) throws -> Any {
-        if let value = try? container.decode(Bool.self, forKey: key) {
-            return value
-        }
-        if let value = try? container.decode(Int64.self, forKey: key) {
-            return value
-        }
-        if let value = try? container.decode(Double.self, forKey: key) {
-            return value
-        }
-        if let value = try? container.decode(String.self, forKey: key) {
-            return value
-        }
-        if let value = try? container.decodeNil(forKey: key) {
-            if value {
-                return TVJSONNull()
-            }
-        }
-        if var container = try? container.nestedUnkeyedContainer(forKey: key) {
-            return try decodeArray(from: &container)
-        }
-        if var container = try? container.nestedContainer(keyedBy: JSONCodingKey.self, forKey: key) {
-            return try decodeDictionary(from: &container)
-        }
-        throw decodingError(forCodingPath: container.codingPath)
-    }
-
-    static func decodeArray(from container: inout UnkeyedDecodingContainer) throws -> [Any] {
-        var arr: [Any] = []
-        while !container.isAtEnd {
-            let value = try decode(from: &container)
-            arr.append(value)
-        }
-        return arr
-    }
-
-    static func decodeDictionary(from container: inout KeyedDecodingContainer<JSONCodingKey>) throws -> [String: Any] {
-        var dict = [String: Any]()
-        for key in container.allKeys {
-            let value = try decode(from: &container, forKey: key)
-            dict[key.stringValue] = value
-        }
-        return dict
-    }
-
-    static func encode(to container: inout UnkeyedEncodingContainer, array: [Any]) throws {
-        for value in array {
-            if let value = value as? Bool {
-                try container.encode(value)
-            } else if let value = value as? Int64 {
-                try container.encode(value)
-            } else if let value = value as? Double {
-                try container.encode(value)
-            } else if let value = value as? String {
-                try container.encode(value)
-            } else if value is TVJSONNull {
-                try container.encodeNil()
-            } else if let value = value as? [Any] {
-                var container = container.nestedUnkeyedContainer()
-                try encode(to: &container, array: value)
-            } else if let value = value as? [String: Any] {
-                var container = container.nestedContainer(keyedBy: JSONCodingKey.self)
-                try encode(to: &container, dictionary: value)
-            } else {
-                throw encodingError(forValue: value, codingPath: container.codingPath)
-            }
-        }
-    }
-
-    static func encode(to container: inout KeyedEncodingContainer<JSONCodingKey>, dictionary: [String: Any]) throws {
-        for (key, value) in dictionary {
-            let key = JSONCodingKey(stringValue: key)!
-            if let value = value as? Bool {
-                try container.encode(value, forKey: key)
-            } else if let value = value as? Int64 {
-                try container.encode(value, forKey: key)
-            } else if let value = value as? Double {
-                try container.encode(value, forKey: key)
-            } else if let value = value as? String {
-                try container.encode(value, forKey: key)
-            } else if value is TVJSONNull {
-                try container.encodeNil(forKey: key)
-            } else if let value = value as? [Any] {
-                var container = container.nestedUnkeyedContainer(forKey: key)
-                try encode(to: &container, array: value)
-            } else if let value = value as? [String: Any] {
-                var container = container.nestedContainer(keyedBy: JSONCodingKey.self, forKey: key)
-                try encode(to: &container, dictionary: value)
-            } else {
-                throw encodingError(forValue: value, codingPath: container.codingPath)
-            }
-        }
-    }
-
-    static func encode(to container: inout SingleValueEncodingContainer, value: Any) throws {
-        if let value = value as? Bool {
-            try container.encode(value)
-        } else if let value = value as? Int64 {
-            try container.encode(value)
-        } else if let value = value as? Double {
-            try container.encode(value)
-        } else if let value = value as? String {
-            try container.encode(value)
-        } else if value is TVJSONNull {
-            try container.encodeNil()
-        } else {
-            throw encodingError(forValue: value, codingPath: container.codingPath)
-        }
-    }
-
-    public required init(from decoder: Decoder) throws {
-        if var arrayContainer = try? decoder.unkeyedContainer() {
-            self.value = try TVJSONAny.decodeArray(from: &arrayContainer)
-        } else if var container = try? decoder.container(keyedBy: JSONCodingKey.self) {
-            self.value = try TVJSONAny.decodeDictionary(from: &container)
-        } else {
-            let container = try decoder.singleValueContainer()
-            self.value = try TVJSONAny.decode(from: container)
-        }
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        if let arr = self.value as? [Any] {
-            var container = encoder.unkeyedContainer()
-            try TVJSONAny.encode(to: &container, array: arr)
-        } else if let dict = self.value as? [String: Any] {
-            var container = encoder.container(keyedBy: JSONCodingKey.self)
-            try TVJSONAny.encode(to: &container, dictionary: dict)
-        } else {
-            var container = encoder.singleValueContainer()
-            try TVJSONAny.encode(to: &container, value: self.value)
-        }
-    }
-}
+//
+//struct TVCreditsModel: Decodable {
+//    let cast: [TVCreditsCast]
+//    let crew: [TVCreditsJSONAny]
+//    let id: Int
+//}
+//
+//struct TVCreditsCast: Decodable {
+//    let adult: Bool
+//    let gender, id: Int
+//    let knownForDepartment, name, originalName: String
+//    let popularity: Double
+//    let profilePath: TVCreditsJSONNull?
+//    let character, creditID: String
+//    let order: Int
+//
+//    private enum CodingKeys: String, CodingKey {
+//        case adult, gender, id
+//        case knownForDepartment = "known_for_department"
+//        case name
+//        case originalName = "original_name"
+//        case popularity
+//        case profilePath = "profile_path"
+//        case character
+//        case creditID = "credit_id"
+//        case order
+//    }
+//}
+//
+//// MARK: - Encode/decode helpers
+//class TVCreditsJSONNull: Decodable, Hashable {
+//
+//    public static func == (lhs: TVCreditsJSONNull, rhs: TVCreditsJSONNull) -> Bool {
+//        return true
+//    }
+//
+//    public var hashValue: Int {
+//        return 0
+//    }
+//
+//    public init() {}
+//
+//    public required init(from decoder: Decoder) throws {
+//        let container = try decoder.singleValueContainer()
+//        if !container.decodeNil() {
+//            throw DecodingError.typeMismatch(TVCreditsJSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
+//        }
+//    }
+//
+//    public func encode(to encoder: Encoder) throws {
+//        var container = encoder.singleValueContainer()
+//        try container.encodeNil()
+//    }
+//}
+//
+//class TVJSONCodingKey: CodingKey {
+//    let key: String
+//
+//    required init?(intValue: Int) {
+//        return nil
+//    }
+//
+//    required init?(stringValue: String) {
+//        key = stringValue
+//    }
+//
+//    var intValue: Int? {
+//        return nil
+//    }
+//
+//    var stringValue: String {
+//        return key
+//    }
+//}
+//
+//class TVCreditsJSONAny: Decodable {
+//
+//    let value: Any
+//
+//    static func decodingError(forCodingPath codingPath: [CodingKey]) -> DecodingError {
+//        let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Cannot decode JSONAny")
+//        return DecodingError.typeMismatch(TVJSONAny.self, context)
+//    }
+//
+//    static func encodingError(forValue value: Any, codingPath: [CodingKey]) -> EncodingError {
+//        let context = EncodingError.Context(codingPath: codingPath, debugDescription: "Cannot encode JSONAny")
+//        return EncodingError.invalidValue(value, context)
+//    }
+//
+//    static func decode(from container: SingleValueDecodingContainer) throws -> Any {
+//        if let value = try? container.decode(Bool.self) {
+//            return value
+//        }
+//        if let value = try? container.decode(Int64.self) {
+//            return value
+//        }
+//        if let value = try? container.decode(Double.self) {
+//            return value
+//        }
+//        if let value = try? container.decode(String.self) {
+//            return value
+//        }
+//        if container.decodeNil() {
+//            return TVJSONNull()
+//        }
+//        throw decodingError(forCodingPath: container.codingPath)
+//    }
+//
+//    static func decode(from container: inout UnkeyedDecodingContainer) throws -> Any {
+//        if let value = try? container.decode(Bool.self) {
+//            return value
+//        }
+//        if let value = try? container.decode(Int64.self) {
+//            return value
+//        }
+//        if let value = try? container.decode(Double.self) {
+//            return value
+//        }
+//        if let value = try? container.decode(String.self) {
+//            return value
+//        }
+//        if let value = try? container.decodeNil() {
+//            if value {
+//                return TVJSONNull()
+//            }
+//        }
+//        if var container = try? container.nestedUnkeyedContainer() {
+//            return try decodeArray(from: &container)
+//        }
+//        if var container = try? container.nestedContainer(keyedBy: JSONCodingKey.self) {
+//            return try decodeDictionary(from: &container)
+//        }
+//        throw decodingError(forCodingPath: container.codingPath)
+//    }
+//
+//    static func decode(from container: inout KeyedDecodingContainer<JSONCodingKey>, forKey key: JSONCodingKey) throws -> Any {
+//        if let value = try? container.decode(Bool.self, forKey: key) {
+//            return value
+//        }
+//        if let value = try? container.decode(Int64.self, forKey: key) {
+//            return value
+//        }
+//        if let value = try? container.decode(Double.self, forKey: key) {
+//            return value
+//        }
+//        if let value = try? container.decode(String.self, forKey: key) {
+//            return value
+//        }
+//        if let value = try? container.decodeNil(forKey: key) {
+//            if value {
+//                return TVJSONNull()
+//            }
+//        }
+//        if var container = try? container.nestedUnkeyedContainer(forKey: key) {
+//            return try decodeArray(from: &container)
+//        }
+//        if var container = try? container.nestedContainer(keyedBy: JSONCodingKey.self, forKey: key) {
+//            return try decodeDictionary(from: &container)
+//        }
+//        throw decodingError(forCodingPath: container.codingPath)
+//    }
+//
+//    static func decodeArray(from container: inout UnkeyedDecodingContainer) throws -> [Any] {
+//        var arr: [Any] = []
+//        while !container.isAtEnd {
+//            let value = try decode(from: &container)
+//            arr.append(value)
+//        }
+//        return arr
+//    }
+//
+//    static func decodeDictionary(from container: inout KeyedDecodingContainer<JSONCodingKey>) throws -> [String: Any] {
+//        var dict = [String: Any]()
+//        for key in container.allKeys {
+//            let value = try decode(from: &container, forKey: key)
+//            dict[key.stringValue] = value
+//        }
+//        return dict
+//    }
+//
+//    static func encode(to container: inout UnkeyedEncodingContainer, array: [Any]) throws {
+//        for value in array {
+//            if let value = value as? Bool {
+//                try container.encode(value)
+//            } else if let value = value as? Int64 {
+//                try container.encode(value)
+//            } else if let value = value as? Double {
+//                try container.encode(value)
+//            } else if let value = value as? String {
+//                try container.encode(value)
+//            } else if value is TVJSONNull {
+//                try container.encodeNil()
+//            } else if let value = value as? [Any] {
+//                var container = container.nestedUnkeyedContainer()
+//                try encode(to: &container, array: value)
+//            } else if let value = value as? [String: Any] {
+//                var container = container.nestedContainer(keyedBy: JSONCodingKey.self)
+//                try encode(to: &container, dictionary: value)
+//            } else {
+//                throw encodingError(forValue: value, codingPath: container.codingPath)
+//            }
+//        }
+//    }
+//
+//    static func encode(to container: inout KeyedEncodingContainer<JSONCodingKey>, dictionary: [String: Any]) throws {
+//        for (key, value) in dictionary {
+//            let key = JSONCodingKey(stringValue: key)!
+//            if let value = value as? Bool {
+//                try container.encode(value, forKey: key)
+//            } else if let value = value as? Int64 {
+//                try container.encode(value, forKey: key)
+//            } else if let value = value as? Double {
+//                try container.encode(value, forKey: key)
+//            } else if let value = value as? String {
+//                try container.encode(value, forKey: key)
+//            } else if value is TVJSONNull {
+//                try container.encodeNil(forKey: key)
+//            } else if let value = value as? [Any] {
+//                var container = container.nestedUnkeyedContainer(forKey: key)
+//                try encode(to: &container, array: value)
+//            } else if let value = value as? [String: Any] {
+//                var container = container.nestedContainer(keyedBy: JSONCodingKey.self, forKey: key)
+//                try encode(to: &container, dictionary: value)
+//            } else {
+//                throw encodingError(forValue: value, codingPath: container.codingPath)
+//            }
+//        }
+//    }
+//
+//    static func encode(to container: inout SingleValueEncodingContainer, value: Any) throws {
+//        if let value = value as? Bool {
+//            try container.encode(value)
+//        } else if let value = value as? Int64 {
+//            try container.encode(value)
+//        } else if let value = value as? Double {
+//            try container.encode(value)
+//        } else if let value = value as? String {
+//            try container.encode(value)
+//        } else if value is TVJSONNull {
+//            try container.encodeNil()
+//        } else {
+//            throw encodingError(forValue: value, codingPath: container.codingPath)
+//        }
+//    }
+//
+//    public required init(from decoder: Decoder) throws {
+//        if var arrayContainer = try? decoder.unkeyedContainer() {
+//            self.value = try TVJSONAny.decodeArray(from: &arrayContainer)
+//        } else if var container = try? decoder.container(keyedBy: JSONCodingKey.self) {
+//            self.value = try TVJSONAny.decodeDictionary(from: &container)
+//        } else {
+//            let container = try decoder.singleValueContainer()
+//            self.value = try TVJSONAny.decode(from: container)
+//        }
+//    }
+//
+//    public func encode(to encoder: Encoder) throws {
+//        if let arr = self.value as? [Any] {
+//            var container = encoder.unkeyedContainer()
+//            try TVJSONAny.encode(to: &container, array: arr)
+//        } else if let dict = self.value as? [String: Any] {
+//            var container = encoder.container(keyedBy: JSONCodingKey.self)
+//            try TVJSONAny.encode(to: &container, dictionary: dict)
+//        } else {
+//            var container = encoder.singleValueContainer()
+//            try TVJSONAny.encode(to: &container, value: self.value)
+//        }
+//    }
+//}

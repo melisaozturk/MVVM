@@ -107,10 +107,10 @@
             </objects>
             <point key="canvasLocation" x="2863.768115942029" y="-699.10714285714278"/>
         </scene>
-        <!--Movie Detail View Controller-->
+        <!--Show Detail View Controller-->
         <scene sceneID="ZnE-15-tSl">
             <objects>
-                <viewController storyboardIdentifier="MovieDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="96Z-Ni-dcQ" customClass="MovieDetailViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="96Z-Ni-dcQ" customClass="ShowDetailViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sio-Ad-icg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
