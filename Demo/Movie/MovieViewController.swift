@@ -12,9 +12,7 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     let viewModel = MovieViewModel()
-    var topRatedModel: MovieTopRatedModel!
-    var nowPlayingModel: MovieNowPlayingModel!
-    var popularModel: MoviePopularModel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +20,6 @@ class MovieViewController: UIViewController {
         
         self.viewModel.getTopRatedData(completion: { [weak self] response in
             if let _ = self {return}
-            self!.topRatedModel = response
         }, completionHandler: { [weak self] error in
             if let _ = self {return}
 //            TODO: Show error
@@ -31,7 +28,6 @@ class MovieViewController: UIViewController {
         
         self.viewModel.getNowPlayingData(completion: { [weak self] response in
             if let _ = self {return}
-            self!.nowPlayingModel = response
         }, completionHandler: { [weak self] error in
             if let _ = self {return}
 //            TODO: Show error
@@ -39,7 +35,6 @@ class MovieViewController: UIViewController {
 
         self.viewModel.getPopularData(completion: { [weak self] response in
             if let _ = self {return}
-            self!.popularModel = response
         }, completionHandler: { [weak self] error in
             if let _ = self {return}
 //            TODO: Show error
@@ -81,17 +76,17 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             cell.pageSource = .topRated
             cell.lblTitle.text = "Top Rated"
-            cell.topRatedModel = self.topRatedModel
+            cell.topRatedModel = self.viewModel.topRatedModel
             cell.collectionView.reloadData()
         case 1:
             cell.pageSource = .nowPlaying
             cell.lblTitle.text = "Now Playing"
-            cell.nowPlayingModel = self.nowPlayingModel
+            cell.nowPlayingModel = self.viewModel.nowPlayingModel
             cell.collectionView.reloadData()
         case 2:
             cell.pageSource = .popular
             cell.lblTitle.text = "Popular"
-            cell.popularModel = self.popularModel
+            cell.popularModel = self.viewModel.popularModel
             cell.collectionView.reloadData()
         default:
             return UITableViewCell()

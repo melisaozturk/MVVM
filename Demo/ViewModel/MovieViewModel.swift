@@ -10,6 +10,9 @@ import Foundation
 class MovieViewModel: ApiClient {
     
     internal let session: URLSession
+    var topRatedModel: MovieTopRatedModel!
+    var nowPlayingModel: MovieNowPlayingModel!
+    var popularModel: MoviePopularModel!
     
     init(configuration: URLSessionConfiguration) {
         self.session = URLSession(configuration: configuration)
@@ -23,8 +26,8 @@ class MovieViewModel: ApiClient {
         getFeedTopRated(from: .movie_topRated, completion: { response in
             switch response {
             case .success(let successResponse):
-                guard let results = successResponse.self else {return}
-                completion(results)
+                self.topRatedModel = successResponse
+                completion(successResponse!)
             case .failure(_):
                 #if DEBUG
                 print("Data Fetch Failed")
