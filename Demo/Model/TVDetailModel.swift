@@ -18,10 +18,10 @@ struct TVDetailModel: Decodable {
         let inProduction : Bool?
         let languages : [String]?
         let lastAirDate : String?
-        let lastEpisodeToAir : TVDetailLastEpisodeToAir?
+//        let lastEpisodeToAir : TVDetailLastEpisodeToAir?
         let name : String?
         let networks : [Network]?
-//        let nextEpisodeToAir : AnyObject?
+////        let nextEpisodeToAir : AnyObject?
         let numberOfEpisodes : Int?
         let numberOfSeasons : Int?
         let originCountry : [String]?
@@ -51,10 +51,10 @@ struct TVDetailModel: Decodable {
                 case inProduction = "in_production"
                 case languages = "languages"
                 case lastAirDate = "last_air_date"
-                case lastEpisodeToAir = "last_episode_to_air"
+//                case lastEpisodeToAir = "last_episode_to_air"
                 case name = "name"
                 case networks = "networks"
-//                case nextEpisodeToAir = "next_episode_to_air"
+////                case nextEpisodeToAir = "next_episode_to_air"
                 case numberOfEpisodes = "number_of_episodes"
                 case numberOfSeasons = "number_of_seasons"
                 case originCountry = "origin_country"
@@ -86,10 +86,10 @@ struct TVDetailModel: Decodable {
                 inProduction = try values.decodeIfPresent(Bool.self, forKey: .inProduction)
                 languages = try values.decodeIfPresent([String].self, forKey: .languages)
                 lastAirDate = try values.decodeIfPresent(String.self, forKey: .lastAirDate)
-                lastEpisodeToAir = try TVDetailLastEpisodeToAir(from: decoder)
+//                lastEpisodeToAir = try TVDetailLastEpisodeToAir(from: decoder)
                 name = try values.decodeIfPresent(String.self, forKey: .name)
                 networks = try values.decodeIfPresent([Network].self, forKey: .networks)
-//                nextEpisodeToAir = try values.decodeIfPresent(AnyObject.self, forKey: .nextEpisodeToAir)
+////                nextEpisodeToAir = try values.decodeIfPresent(AnyObject.self, forKey: .nextEpisodeToAir)
                 numberOfEpisodes = try values.decodeIfPresent(Int.self, forKey: .numberOfEpisodes)
                 numberOfSeasons = try values.decodeIfPresent(Int.self, forKey: .numberOfSeasons)
                 originCountry = try values.decodeIfPresent([String].self, forKey: .originCountry)
