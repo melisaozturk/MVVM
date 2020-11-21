@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 class MovieCell: UITableViewCell {
-
+    
     enum PageSource {
         case topRated
         case nowPlaying
@@ -28,7 +28,7 @@ class MovieCell: UITableViewCell {
         super.awakeFromNib()
         self.collectionRegister()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -42,50 +42,50 @@ class MovieCell: UITableViewCell {
     }
 }
 
-    extension MovieCell: UICollectionViewDelegate, UICollectionViewDataSource {
-        
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            switch pageSource {
-            case .topRated:
-                return self.topRatedModel.results.count
-            case .nowPlaying:
-                return self.topRatedModel.results.count
-            case .popular:
-                return self.topRatedModel.results.count
-            default:
-                break
-            }
-            return 0
+extension MovieCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch pageSource {
+        case .topRated:
+            return self.topRatedModel.results.count
+        case .nowPlaying:
+            return self.topRatedModel.results.count
+        case .popular:
+            return self.topRatedModel.results.count
+        default:
+            break
         }
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InternalMovieCell", for: indexPath) as! InternalMovieCell
-            switch pageSource {
-            case .topRated:
-                cell.lblTitleShow.text = self.topRatedModel.results[indexPath.row].title
-                let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.topRatedModel.results[indexPath.row].posterPath)")
-                cell.imgShow.kf.setImage(with: url)
-                break
-            case .nowPlaying:
-                cell.lblTitleShow.text = self.nowPlayingModel.results[indexPath.row].title
-                let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.nowPlayingModel.results[indexPath.row].posterPath)")
-                cell.imgShow.kf.setImage(with: url)
-                break
-            case .popular:
-                cell.lblTitleShow.text = self.popularModel.results[indexPath.row].title
-                let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.popularModel.results[indexPath.row].posterPath)")
-                cell.imgShow.kf.setImage(with: url)
-                break
-            default:
-                break
-            }
-            return cell
-        }
-//        TODO : GOTO Detail
-//        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//            NotificationCenter.default.post(name: Notification.Name(rawValue: "CellSelect"), object: nil, userInfo: ["SelectedCell": indexPath.row])
-//        }
+        return 0
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InternalMovieCell", for: indexPath) as! InternalMovieCell
+        switch pageSource {
+        case .topRated: //TODO
+            cell.lblTitleShow.text = self.topRatedModel.results[indexPath.row].title
+            let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.topRatedModel.results[indexPath.row].posterPath)")
+            cell.imgShow.kf.setImage(with: url)
+            break
+        case .nowPlaying:
+            cell.lblTitleShow.text = self.nowPlayingModel.results[indexPath.row].title
+            let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.nowPlayingModel.results[indexPath.row].posterPath)")
+            cell.imgShow.kf.setImage(with: url)
+            break
+        case .popular:
+            cell.lblTitleShow.text = self.popularModel.results[indexPath.row].title
+            let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.popularModel.results[indexPath.row].posterPath)")
+            cell.imgShow.kf.setImage(with: url)
+            break
+        default:
+            break
+        }
+        return cell
+    }
+    //        TODO : GOTO Detail
+    //        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //            NotificationCenter.default.post(name: Notification.Name(rawValue: "CellSelect"), object: nil, userInfo: ["SelectedCell": indexPath.row])
+    //        }
+}
 
 extension MovieCell: UICollectionViewDelegateFlowLayout {
     

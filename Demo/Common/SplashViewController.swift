@@ -20,9 +20,6 @@ class SplashViewController: UIViewController {
     }
     
     @objc func showView(){
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieViewController") as! MovieViewController
-        let navigation = UINavigationController(rootViewController: vc)
-        self.present(navigation, animated: true, completion: nil)
-        vc.modalPresentationStyle = .fullScreen
+        self.performSegue(withIdentifier: "tabbarSegue", sender: self)
     }
 }

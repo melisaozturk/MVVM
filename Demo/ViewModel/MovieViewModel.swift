@@ -62,6 +62,7 @@ class MovieViewModel: ApiClient {
             switch response {
             case .success(let successResponse):
                 guard let results = successResponse.self else {return}
+                self.popularModel = successResponse
                 completion(results)
             case .failure(_):
                 #if DEBUG
@@ -91,6 +92,7 @@ class MovieViewModel: ApiClient {
             switch response {
             case .success(let successResponse):
                 guard let results = successResponse.self else {return}
+                self.nowPlayingModel = successResponse
                 completion(results)
             case .failure(_):
                 #if DEBUG

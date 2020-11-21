@@ -12,15 +12,15 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     let viewModel = MovieViewModel()
-    var topRatedModel: MovieTopRatedModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.tableRegister()
         
         self.viewModel.getTopRatedData(completion: { [weak self] response in
             if let _ = self {
-                self!.topRatedModel = response
+                self!.tableView.reloadData()
             }
         }, completionHandler: { [weak self] error in
             if let _ = self {
@@ -30,6 +30,7 @@ class MovieViewController: UIViewController {
         
         self.viewModel.getNowPlayingData(completion: { [weak self] response in
             if let _ = self {
+                self!.tableView.reloadData()
             }
         }, completionHandler: { [weak self] error in
             if let _ = self {
@@ -39,6 +40,7 @@ class MovieViewController: UIViewController {
 
         self.viewModel.getPopularData(completion: { [weak self] response in
             if let _ = self {
+                self!.tableView.reloadData()
             }
         }, completionHandler: { [weak self] error in
             if let _ = self {
@@ -46,9 +48,6 @@ class MovieViewController: UIViewController {
             }
         })
         
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
        
     }
     
@@ -83,19 +82,19 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
             cell.pageSource = .topRated
             cell.lblTitle.text = "Top Rated"
             cell.topRatedModel = self.viewModel.topRatedModel
-            cell.collectionView.reloadData()
         case 1:
             cell.pageSource = .nowPlaying
             cell.lblTitle.text = "Now Playing"
             cell.nowPlayingModel = self.viewModel.nowPlayingModel
-            cell.collectionView.reloadData()
         case 2:
             cell.pageSource = .popular
             cell.lblTitle.text = "Popular"
             cell.popularModel = self.viewModel.popularModel
-            cell.collectionView.reloadData()
         default:
             return UITableViewCell()
+        }
+        if self.viewModel.topRatedModel != nil && self.viewModel.nowPlayingModel != nil && self.viewModel.popularModel != nil {
+            cell.collectionView.reloadData()
         }
         return cell
     }

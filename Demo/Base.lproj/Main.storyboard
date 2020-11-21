@@ -68,7 +68,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bRU-9o-Ep1"/>
                     <connections>
-                        <segue destination="IZd-fa-C37" kind="presentation" id="vgr-0F-JeV"/>
+                        <segue destination="IZd-fa-C37" kind="presentation" identifier="tabbarSegue" id="vgr-0F-JeV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWY-ej-n63" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

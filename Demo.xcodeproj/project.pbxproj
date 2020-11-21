@@ -281,10 +281,10 @@
 		1E8C5DCB25686E12006E36C3 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				1E8C5DD925686E83006E36C3 /* MovieCell.swift */,
-				1E8C5DDA25686E83006E36C3 /* MovieCell.xib */,
 				1E8C5DED25687032006E36C3 /* InternalMovieCell.swift */,
 				1E8C5DEE25687032006E36C3 /* InternalMovieCell.xib */,
+				1E8C5DD925686E83006E36C3 /* MovieCell.swift */,
+				1E8C5DDA25686E83006E36C3 /* MovieCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

@@ -53,6 +53,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" red="0.0" green="0.67450980390000004" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="collectionView" destination="ZZG-6R-WzW" id="rLH-yZ-7KA"/>
                 <outlet property="lblTitle" destination="z2O-4B-tOg" id="yBb-Gl-LBN"/>
