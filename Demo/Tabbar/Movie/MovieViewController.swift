@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieViewController: UIViewController {
     
@@ -106,13 +107,18 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch self.segmentedControl.selectedSegmentIndex {
         case 0:
-            //"Top Rated"
             cell.lblTitle.text = self.viewModel.topRatedModel.results[indexPath.row].title
+            let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.viewModel.topRatedModel.results[indexPath.row].posterPath)")
+            cell.imgShow.kf.setImage(with: url)
             break
         case 1:
             cell.lblTitle.text = self.viewModel.nowPlayingModel.results[indexPath.row].title
+            let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.viewModel.nowPlayingModel.results[indexPath.row].posterPath)")
+            cell.imgShow.kf.setImage(with: url)
         case 2:
             cell.lblTitle.text = self.viewModel.popularModel.results[indexPath.row].title
+            let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.viewModel.popularModel.results[indexPath.row].posterPath)")
+            cell.imgShow.kf.setImage(with: url)
         default:
             break
         }
@@ -121,6 +127,6 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 150
     }
 }

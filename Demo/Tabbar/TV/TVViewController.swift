@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TVViewController: UIViewController {
 
@@ -90,9 +91,13 @@ extension TVViewController: UITableViewDelegate, UITableViewDataSource {
         switch self.segmentedControl.selectedSegmentIndex {
         case 0:
             cell.lblTitle.text = self.viewModel.tvTopRatedModel.results[indexPath.row].name
+            let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.viewModel.tvTopRatedModel.results[indexPath.row].posterPath)")
+            cell.imgShow.kf.setImage(with: url)
             break
         case 1:
             cell.lblTitle.text = self.viewModel.tvPopularModel.results[indexPath.row].name
+            let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.viewModel.tvPopularModel.results[indexPath.row].posterPath)")
+            cell.imgShow.kf.setImage(with: url)
         default:
             break
         }
@@ -101,6 +106,6 @@ extension TVViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 150
     }
 }

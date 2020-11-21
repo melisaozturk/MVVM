@@ -31,7 +31,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="csw-Kl-doD">
-                                <rect key="frame" x="0.0" y="84" width="414" height="729"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="727"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -42,7 +42,7 @@
                             <constraint firstItem="qht-Cn-kK7" firstAttribute="bottom" secondItem="csw-Kl-doD" secondAttribute="bottom" id="9Js-ah-CPz"/>
                             <constraint firstItem="Axp-tk-K3x" firstAttribute="top" secondItem="qht-Cn-kK7" secondAttribute="top" id="KEc-7F-6OC"/>
                             <constraint firstItem="Axp-tk-K3x" firstAttribute="leading" secondItem="qht-Cn-kK7" secondAttribute="leading" id="Whg-IY-r1G"/>
-                            <constraint firstItem="csw-Kl-doD" firstAttribute="top" secondItem="Axp-tk-K3x" secondAttribute="bottom" id="XNd-2A-JmW"/>
+                            <constraint firstItem="csw-Kl-doD" firstAttribute="top" secondItem="Axp-tk-K3x" secondAttribute="bottom" constant="2" id="XNd-2A-JmW"/>
                             <constraint firstItem="qht-Cn-kK7" firstAttribute="trailing" secondItem="csw-Kl-doD" secondAttribute="trailing" id="jUn-5U-TWL"/>
                             <constraint firstItem="csw-Kl-doD" firstAttribute="leading" secondItem="qht-Cn-kK7" secondAttribute="leading" id="ref-g5-dH8"/>
                         </constraints>
