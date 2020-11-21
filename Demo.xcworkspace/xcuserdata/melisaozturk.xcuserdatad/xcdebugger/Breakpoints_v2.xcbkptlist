@@ -8,14 +8,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0DDC02F7-A668-445A-A884-CF34213665A8"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Demo/Tabbar/Movie/MovieViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -24,16 +24,254 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "BFFB6CE4-35EB-4303-ADE6-345E825068C9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Demo/Tabbar/Movie/MovieViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F5FDE1FF-E719-4836-8BAC-B6F47CC499D7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Demo/Tabbar/Movie/MovieViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6F03934-238C-432D-8EC0-42DBC4E8BBBD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Demo/APIClient/Endpoint.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "path"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1CD56BE6-6EC9-4FCA-9A80-538AEA91CACA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Demo/APIClient/Endpoint.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "query"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "851BE761-DA84-4464-8887-BBEE3BCA210D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Demo/ViewModel/MovieDetailViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "getMovieDetailData(completion:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "851BE761-DA84-4464-8887-BBEE3BCA210D - 4b21aced1af1e829"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Optional&lt;Demo.MovieDetailModel&gt;, Demo.APIError&gt;) -&gt; () in Demo.MovieDetailViewModel.getMovieDetailData(completion: (Demo.MovieDetailModel) -&gt; (), completionHandler: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melisaozturk/devel/Demo/Demo/ViewModel/MovieDetailViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "272">
+               </Location>
+               <Location
+                  uuid = "851BE761-DA84-4464-8887-BBEE3BCA210D - 4b21aced1af1e829"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Optional&lt;Demo.MovieDetailModel&gt;, Demo.APIError&gt;) -&gt; () in Demo.MovieDetailViewModel.getMovieDetailData(completion: (Demo.MovieDetailModel) -&gt; (), completionHandler: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melisaozturk/devel/Demo/Demo/ViewModel/MovieDetailViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "300">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "70AAD8DD-AE01-4FD0-B5CD-7950BB039000"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Demo/ViewModel/MovieDetailViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "getFeedMovieDetail(from:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "03278D8B-2C08-488E-BEA7-733B00FD114F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Demo/Detail/MovieDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "03278D8B-2C08-488E-BEA7-733B00FD114F - 592af3236831e719"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Demo.MovieDetailViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melisaozturk/devel/Demo/Demo/Detail/MovieDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "391">
+               </Location>
+               <Location
+                  uuid = "03278D8B-2C08-488E-BEA7-733B00FD114F - fb25feb390f42f71"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Demo.MovieDetailModel) -&gt; () in Demo.MovieDetailViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melisaozturk/devel/Demo/Demo/Detail/MovieDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "161">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "44DC5234-029A-4170-AE85-E7DE153B98F4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Demo/Tabbar/Movie/MovieViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "44DC5234-029A-4170-AE85-E7DE153B98F4 - 39c28bab2ba2a5cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Demo.MovieViewController.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melisaozturk/devel/Demo/Demo/Tabbar/Movie/MovieViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "166">
+               </Location>
+               <Location
+                  uuid = "44DC5234-029A-4170-AE85-E7DE153B98F4 - 39c28bab2ba2a5cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Demo.MovieViewController.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melisaozturk/devel/Demo/Demo/Tabbar/Movie/MovieViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "418">
+               </Location>
+               <Location
+                  uuid = "44DC5234-029A-4170-AE85-E7DE153B98F4 - 39c28bab2ba2a5cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Demo.MovieViewController.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melisaozturk/devel/Demo/Demo/Tabbar/Movie/MovieViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "1135">
+               </Location>
+               <Location
+                  uuid = "44DC5234-029A-4170-AE85-E7DE153B98F4 - 39c28bab2ba2a5cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Demo.MovieViewController.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melisaozturk/devel/Demo/Demo/Tabbar/Movie/MovieViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "1849">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

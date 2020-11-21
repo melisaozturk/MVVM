@@ -14,6 +14,7 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private let viewModel = MovieViewModel()
+    static var selectedID = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,7 +125,24 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
-    
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch self.segmentedControl.selectedSegmentIndex {
+        case 0:
+            MovieViewController.selectedID = self.viewModel.topRatedModel.results[indexPath.row].id
+            break
+        case 1:
+            MovieViewController.selectedID = self.viewModel.nowPlayingModel.results[indexPath.row].id
+        case 2:
+            MovieViewController.selectedID = self.viewModel.popularModel.results[indexPath.row].id
+        default:
+            break
+        }
+                
+//        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController {
+            self.performSegue(withIdentifier: "movieDetailSegue", sender: self)
+//        }
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
