@@ -18,37 +18,41 @@ class MovieViewController: UIViewController {
         super.viewDidLoad()
         self.tableRegister()
         
+        UIManager.shared().showLoading(view: self.view)
         self.viewModel.getTopRatedData(completion: { [weak self] response in
+            UIManager.shared().removeLoading(view: self!.view)
             if let _ = self {
                 self!.tableView.reloadData()
             }
         }, completionHandler: { [weak self] error in
             if let _ = self {
-                //            TODO: Show error
+                UIManager.shared().errorHandle(viewController: self!, message: "Bir hata oluştu.")
             }
         })
         
+        UIManager.shared().showLoading(view: self.view)
         self.viewModel.getNowPlayingData(completion: { [weak self] response in
+            UIManager.shared().removeLoading(view: self!.view)
             if let _ = self {
                 self!.tableView.reloadData()
             }
         }, completionHandler: { [weak self] error in
             if let _ = self {
-                //            TODO: Show error
+                UIManager.shared().errorHandle(viewController: self!, message: "Bir hata oluştu.")
             }
         })
-        
-        
+                
+        UIManager.shared().showLoading(view: self.view)
         self.viewModel.getPopularData(completion: { [weak self] response in
+            UIManager.shared().removeLoading(view: self!.view)
             if let _ = self {
                 self!.tableView.reloadData()
             }
         }, completionHandler: { [weak self] error in
             if let _ = self {
-                //            TODO: Show error
+                UIManager.shared().errorHandle(viewController: self!, message: "Bir hata oluştu.")
             }
         })
-        
     }
     
     private func tableRegister() {

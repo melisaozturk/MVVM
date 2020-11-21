@@ -113,8 +113,20 @@
                     <view key="view" contentMode="scaleToFill" id="0yt-GA-yuq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wle-RC-Z5R">
+                                <rect key="frame" x="165.5" y="437.5" width="83" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="AV5-f1-58d"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wle-RC-Z5R" firstAttribute="centerX" secondItem="0yt-GA-yuq" secondAttribute="centerX" id="Ee4-kZ-IH8"/>
+                            <constraint firstItem="wle-RC-Z5R" firstAttribute="centerY" secondItem="0yt-GA-yuq" secondAttribute="centerY" id="chr-7E-rAD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bRU-9o-Ep1"/>
                     <connections>

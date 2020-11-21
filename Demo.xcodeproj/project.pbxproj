@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0B8C8025694E3A00939453 /* UIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B8C7F25694E3A00939453 /* UIManager.swift */; };
+		1E0B8C8F25694E9800939453 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E0B8C8E25694E9800939453 /* Loading.xib */; };
+		1E0B8C9425694EC400939453 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B8C9325694EC400939453 /* Loading.swift */; };
 		1E27722C25658AF500ADCE00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E27722B25658AF500ADCE00 /* AppDelegate.swift */; };
 		1E27722E25658AF500ADCE00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E27722D25658AF500ADCE00 /* SceneDelegate.swift */; };
 		1E27723325658AF600ADCE00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E27723125658AF600ADCE00 /* Main.storyboard */; };
@@ -61,6 +64,9 @@
 
 /* Begin PBXFileReference section */
 		13D0A8C54AF1D85845FA2CF8 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		1E0B8C7F25694E3A00939453 /* UIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIManager.swift; sourceTree = "<group>"; };
+		1E0B8C8E25694E9800939453 /* Loading.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Loading.xib; sourceTree = "<group>"; };
+		1E0B8C9325694EC400939453 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		1E27722825658AF500ADCE00 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E27722B25658AF500ADCE00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E27722D25658AF500ADCE00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +149,15 @@
 				1E8C5D2925685334006E36C3 /* TV */,
 			);
 			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		1E0B8C8525694E7500939453 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				1E0B8C8E25694E9800939453 /* Loading.xib */,
+				1E0B8C9325694EC400939453 /* Loading.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		1E27721F25658AF500ADCE00 = {
@@ -242,7 +257,9 @@
 		1E8C5CC22568306E006E36C3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1E0B8C8525694E7500939453 /* Loading */,
 				1E8C5E022568763F006E36C3 /* SplashViewController.swift */,
+				1E0B8C7F25694E3A00939453 /* UIManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -425,6 +442,7 @@
 				1E27723825658AF900ADCE00 /* LaunchScreen.storyboard in Resources */,
 				1E27723525658AF900ADCE00 /* Assets.xcassets in Resources */,
 				1E8C5DDC25686E83006E36C3 /* MovieCell.xib in Resources */,
+				1E0B8C8F25694E9800939453 /* Loading.xib in Resources */,
 				1E27723325658AF600ADCE00 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,6 +573,7 @@
 			files = (
 				1E8C5D5C256855C0006E36C3 /* TVViewModel.swift in Sources */,
 				1E8C5D9B25685A5D006E36C3 /* MovieDetailViewController.swift in Sources */,
+				1E0B8C9425694EC400939453 /* Loading.swift in Sources */,
 				1E8C5CCB25683A4A006E36C3 /* MovieTopRatedModel.swift in Sources */,
 				1E8C5DC225685FAE006E36C3 /* MovieCredits.swift in Sources */,
 				1E8C5DB825685D41006E36C3 /* MovieDetailModel.swift in Sources */,
@@ -573,6 +592,7 @@
 				1E8C5D2B25685342006E36C3 /* TVViewController.swift in Sources */,
 				1E27722E25658AF500ADCE00 /* SceneDelegate.swift in Sources */,
 				1E8C5D302568535C006E36C3 /* TVTopRatedModel.swift in Sources */,
+				1E0B8C8025694E3A00939453 /* UIManager.swift in Sources */,
 				1E8C5DA825685A7C006E36C3 /* MovieDetailViewModel.swift in Sources */,
 				1E8C5D6725685693006E36C3 /* Endpoint.swift in Sources */,
 				1E8C5DC72568612A006E36C3 /* TVCredits.swift in Sources */,
