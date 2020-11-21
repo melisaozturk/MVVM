@@ -12,32 +12,38 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     let viewModel = MovieViewModel()
-
+    var topRatedModel: MovieTopRatedModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableRegister()
         
         self.viewModel.getTopRatedData(completion: { [weak self] response in
-            if let _ = self {return}
+            if let _ = self {
+                self!.topRatedModel = response
+            }
         }, completionHandler: { [weak self] error in
-            if let _ = self {return}
-//            TODO: Show error
+            if let _ = self {
+                //            TODO: Show error
+            }
         })
         
-        
         self.viewModel.getNowPlayingData(completion: { [weak self] response in
-            if let _ = self {return}
+            if let _ = self {
+            }
         }, completionHandler: { [weak self] error in
-            if let _ = self {return}
-//            TODO: Show error
+            if let _ = self {
+                //            TODO: Show error
+            }
         })
 
         self.viewModel.getPopularData(completion: { [weak self] response in
-            if let _ = self {return}
+            if let _ = self {
+            }
         }, completionHandler: { [weak self] error in
-            if let _ = self {return}
-//            TODO: Show error
+            if let _ = self {
+                //            TODO: Show error
+            }
         })
         
         DispatchQueue.main.async {

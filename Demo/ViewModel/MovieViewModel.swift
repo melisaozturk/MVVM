@@ -7,13 +7,19 @@
 
 import Foundation
 
+protocol MovieViewModelDelegate {
+    func requestCompleted()
+}
+
 class MovieViewModel: ApiClient {
     
     internal let session: URLSession
+    
     var topRatedModel: MovieTopRatedModel!
     var nowPlayingModel: MovieNowPlayingModel!
     var popularModel: MoviePopularModel!
-    
+    var delegate: MovieViewModelDelegate?
+
     init(configuration: URLSessionConfiguration) {
         self.session = URLSession(configuration: configuration)
     }

@@ -49,9 +49,9 @@ class MovieCell: UITableViewCell {
             case .topRated:
                 return self.topRatedModel.results.count
             case .nowPlaying:
-                return self.nowPlayingModel.results.count
+                return self.topRatedModel.results.count
             case .popular:
-                return self.popularModel.results.count
+                return self.topRatedModel.results.count
             default:
                 break
             }
