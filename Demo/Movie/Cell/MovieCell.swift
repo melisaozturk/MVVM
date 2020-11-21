@@ -49,9 +49,9 @@ extension MovieCell: UICollectionViewDelegate, UICollectionViewDataSource {
         case .topRated:
             return self.topRatedModel.results.count
         case .nowPlaying:
-            return self.topRatedModel.results.count
+            return self.nowPlayingModel.results.count
         case .popular:
-            return self.topRatedModel.results.count
+            return self.popularModel.results.count
         default:
             break
         }
