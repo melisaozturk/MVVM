@@ -32,7 +32,7 @@ class MovieViewController: UIViewController {
         self.tableView.separatorStyle = .none
         self.tableView.separatorStyle = .none
         
-        self.tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
+        self.tableView.register(UINib(nibName: "ShowCell", bundle: nil), forCellReuseIdentifier: "ShowCell")
     }
     
     private func getData() {
@@ -110,7 +110,7 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ShowCell", for: indexPath) as! ShowCell
         cell.selectionStyle = .none
         
         switch self.segmentedControl.selectedSegmentIndex {

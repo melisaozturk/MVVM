@@ -1,5 +1,5 @@
 //
-//  MovieCell.swift
+//  ShowCell.swift
 //  Demo
 //
 //  Created by melisa öztürk on 21.11.2020.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MovieCell: UITableViewCell {
+class ShowCell: UITableViewCell {
     
     @IBOutlet weak var viewContent: UIView!
     @IBOutlet weak var imgShow: UIImageView!

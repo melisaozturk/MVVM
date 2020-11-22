@@ -20,6 +20,7 @@ class ShowDetailViewController: UIViewController {
     @IBOutlet weak var lblPopularity: UILabel!
     @IBOutlet weak var lblRuntime: UILabel!
     @IBOutlet weak var textViewOverview: UITextView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     private let movieViewModel = MovieDetailViewModel()
     private let tvViewModel = TVDetailViewModel()
@@ -28,12 +29,20 @@ class ShowDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.registerCollection()
         self.getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    private func registerCollection() {
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        
+        collectionView.register(UINib(nibName: "CreditsCell", bundle: nil), forCellWithReuseIdentifier: "CreditsCell")
     }
     
     private func getData() {
@@ -45,6 +54,7 @@ class ShowDetailViewController: UIViewController {
                     if let movieDetailModel = self!.movieViewModel.movieDetailModel {
                         let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self!.movieViewModel.movieDetailModel.posterPath!)")
                         self!.imgMovie.kf.setImage(with: url)
+                        self!.imgMovie.contentMode = .scaleAspectFill
                         self!.lblTitle.text = movieDetailModel.title
                         self!.lblRating.text = String(movieDetailModel.voteAverage ?? 0)
                         self!.lblPopularity.text = String(movieDetailModel.voteCount ?? 0)
@@ -62,6 +72,7 @@ class ShowDetailViewController: UIViewController {
             self.movieViewModel.getMovieCreditsData(id: self.id, completion: { [weak self] response in
                 if let _ = self {
                     UIManager.shared().removeLoading(view: self!.view)
+                    self!.collectionView.reloadData()
                 }
             }, completionHandler: { _ in
             })
@@ -72,6 +83,7 @@ class ShowDetailViewController: UIViewController {
                 if let _ = self {
                     let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self!.tvViewModel.tvDetailModel.posterPath!)")
                     self!.imgMovie.kf.setImage(with: url)
+                    self!.imgMovie.contentMode = .scaleAspectFill
                     self!.lblTitle.text = self!.tvViewModel.tvDetailModel.name
                     self!.lblRating.text = String(self!.tvViewModel.tvDetailModel.voteAverage ?? 0)
                     self!.lblPopularity.text = String(self!.tvViewModel.tvDetailModel.voteCount ?? 0)
@@ -88,11 +100,66 @@ class ShowDetailViewController: UIViewController {
             self.tvViewModel.getTVCreditsData(id: self.id, completion: { [weak self] response in
                 if let _ = self {
                     UIManager.shared().removeLoading(view: self!.view)
+                    self!.collectionView.reloadData()
                 }
             }, completionHandler: { _ in
             })
         default:
             break
         }
+    }
+}
+
+extension ShowDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch pageSource {
+        case .movie:
+            if self.movieViewModel.movieCreditsModel != nil {
+                return self.movieViewModel.movieCreditsModel.cast?.count ?? 0
+            }
+        case .tv:
+            if self.tvViewModel.tvCreditsModel != nil {
+                return self.tvViewModel.tvCreditsModel.cast?.count ?? 0
+            }
+        default:
+            return 0
+        }
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditsCell", for: indexPath) as! CreditsCell
+        
+        switch pageSource {
+        case .movie:
+            if let cast = self.movieViewModel.movieCreditsModel.cast {
+                if let path = cast[indexPath.row].profilePath {
+                    let url = URL(string: "http://image.tmdb.org/t/p/w500//\(path)")
+                    cell.imgCast.kf.setImage(with: url)
+                } else {
+                    cell.imgCast.image = UIImage(named: "movie")
+                }
+                cell.lblCastName.text = cast[indexPath.row].character ?? ""
+                cell.lblOriginalName.text = cast[indexPath.row].originalName ?? ""
+            }
+        case .tv:
+            if let cast = self.tvViewModel.tvCreditsModel.cast {
+                if let path = cast[indexPath.row].profilePath {
+                    let url = URL(string: "http://image.tmdb.org/t/p/w500//\(path)")
+                    cell.imgCast.kf.setImage(with: url)
+                } else {
+                    cell.imgCast.image = UIImage(named: "tv")
+                }
+                cell.lblCastName.text = cast[indexPath.row].character ?? ""
+                cell.lblOriginalName.text = cast[indexPath.row].originalName ?? ""
+            }
+        default: return UICollectionViewCell()
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: self.collectionView.frame.width / 3, height: self.collectionView.frame.height)
     }
 }

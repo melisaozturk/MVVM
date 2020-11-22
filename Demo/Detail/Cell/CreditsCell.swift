@@ -9,9 +9,11 @@ import UIKit
 
 class CreditsCell: UICollectionViewCell {
 
+    @IBOutlet weak var imgCast: UIImageView!
+    @IBOutlet weak var lblCastName: UILabel!
+    @IBOutlet weak var lblOriginalName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
 }

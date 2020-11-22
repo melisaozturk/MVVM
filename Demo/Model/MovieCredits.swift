@@ -9,14 +9,14 @@ import Foundation
 
 struct MovieCreditsModel: Decodable {
     let id: Int
-    let cast, crew: [MovieCast]
+    let cast, crew: [MovieCast]?
 }
 
 struct MovieCast: Decodable {
     let adult: Bool
     let gender, id: Int
     let knownForDepartment: MovieDepartment
-    let name, originalName: String
+    let name, originalName: String?
     let popularity: Double
     let profilePath: String?
     let castID: Int?
