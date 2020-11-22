@@ -22,23 +22,8 @@ class MovieDetailViewModel: ApiClient {
     }
     
     internal func getMovieDetailData(id: Int, completion: @escaping (MovieDetailModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeedMovieDetail(from: .movie_detail(id), completion: { response in
-            switch response {
-            case .success(let successResponse):
-                self.movieDetailModel = successResponse
-                completion(successResponse!)
-            case .failure(_):
-                #if DEBUG
-                print("Data Fetch Failed")
-                #endif
-                completionHandler("Error")
-            }
-        })
-    }
-    
-    private func getFeedMovieDetail(from endpointType: Endpoint, completion: @escaping (Result<MovieDetailModel?, APIError>) -> Void) {
         
-        let endpoint = endpointType
+        let endpoint = Endpoint.movie_detail(id)
         let request = endpoint.request
         #if DEBUG
         print(request)
@@ -47,15 +32,12 @@ class MovieDetailViewModel: ApiClient {
         fetch(with: request, decode: { json -> MovieDetailModel? in
             guard let feedResult = json as? MovieDetailModel else { return  nil }
             return feedResult
-        }, completion: completion)
-    }
- 
-    internal func getMovieCreditsData(id: Int, completion: @escaping (MovieCreditsModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeedMovieCredits(from: .movie_credits(id), completion: { response in
+        }, completion: { [weak self] response in
+            guard let self = self else { return }
             switch response {
             case .success(let successResponse):
-                self.movieCreditsModel = successResponse
-                completion(successResponse!)
+                self.movieDetailModel = successResponse
+                completion(successResponse)
             case .failure(_):
                 #if DEBUG
                 print("Data Fetch Failed")
@@ -65,9 +47,9 @@ class MovieDetailViewModel: ApiClient {
         })
     }
     
-    private func getFeedMovieCredits(from endpointType: Endpoint, completion: @escaping (Result<MovieCreditsModel?, APIError>) -> Void) {
-        
-        let endpoint = endpointType
+    internal func getMovieCreditsData(id: Int, completion: @escaping (MovieCreditsModel) -> Void, completionHandler: @escaping (String) -> Void) {
+    
+        let endpoint = Endpoint.movie_credits(id)
         let request = endpoint.request
         #if DEBUG
         print(request)
@@ -76,7 +58,18 @@ class MovieDetailViewModel: ApiClient {
         fetch(with: request, decode: { json -> MovieCreditsModel? in
             guard let feedResult = json as? MovieCreditsModel else { return  nil }
             return feedResult
-        }, completion: completion)
+        }, completion: { [weak self] response in
+            guard let self = self else { return }
+            switch response {
+            case .success(let successResponse):
+                self.movieCreditsModel = successResponse
+                completion(successResponse)
+            case .failure(_):
+                #if DEBUG
+                print("Data Fetch Failed")
+                #endif
+                completionHandler("Error")
+            }
+        })
     }
-    
 }

@@ -9,7 +9,7 @@ import Foundation
 
 class TVDetailViewModel: ApiClient {
     
-    internal let session: URLSession
+    let session: URLSession
     var tvDetailModel: TVDetailModel!
     var tvCreditsModel: TVCreditsModel!
     
@@ -22,23 +22,8 @@ class TVDetailViewModel: ApiClient {
     }
     
     internal func getTVDetailData(id: Int, completion: @escaping (TVDetailModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeedTVDetail(from: .tv_detail(id), completion: { response in
-            switch response {
-            case .success(let successResponse):
-                self.tvDetailModel = successResponse
-                completion(successResponse!)
-            case .failure(_):
-                #if DEBUG
-                print("Data Fetch Failed")
-                #endif
-                completionHandler("Error")
-            }
-        })
-    }
-    
-    private func getFeedTVDetail(from endpointType: Endpoint, completion: @escaping (Result<TVDetailModel?, APIError>) -> Void) {
         
-        let endpoint = endpointType
+        let endpoint = Endpoint.tv_detail(id)
         let request = endpoint.request
         #if DEBUG
         print(request)
@@ -47,15 +32,12 @@ class TVDetailViewModel: ApiClient {
         fetch(with: request, decode: { json -> TVDetailModel? in
             guard let feedResult = json as? TVDetailModel else { return  nil }
             return feedResult
-        }, completion: completion)
-    }
-    
-    internal func getTVCreditsData(id: Int, completion: @escaping (TVCreditsModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeedTVCredits(from: .tv_credits(id), completion: { response in
+        }, completion: { [weak self] response in
+            guard let self = self else { return }
             switch response {
             case .success(let successResponse):
-                self.tvCreditsModel = successResponse
-                completion(successResponse!)
+                self.tvDetailModel = successResponse
+                completion(successResponse)
             case .failure(_):
                 #if DEBUG
                 print("Data Fetch Failed")
@@ -65,9 +47,9 @@ class TVDetailViewModel: ApiClient {
         })
     }
     
-    private func getFeedTVCredits(from endpointType: Endpoint, completion: @escaping (Result<TVCreditsModel?, APIError>) -> Void) {
+    internal func getTVCreditsData(id: Int, completion: @escaping (TVCreditsModel) -> Void, completionHandler: @escaping (String) -> Void) {
         
-        let endpoint = endpointType
+        let endpoint = Endpoint.tv_credits(id)
         let request = endpoint.request
         #if DEBUG
         print(request)
@@ -76,6 +58,18 @@ class TVDetailViewModel: ApiClient {
         fetch(with: request, decode: { json -> TVCreditsModel? in
             guard let feedResult = json as? TVCreditsModel else { return  nil }
             return feedResult
-        }, completion: completion)
+        }, completion: { [weak self] response in
+            guard let self = self else { return }
+            switch response {
+            case .success(let successResponse):
+                self.tvCreditsModel = successResponse
+                completion(successResponse)
+            case .failure(_):
+                #if DEBUG
+                print("Data Fetch Failed")
+                #endif
+                completionHandler("Error")
+            }
+        })
     }
 }

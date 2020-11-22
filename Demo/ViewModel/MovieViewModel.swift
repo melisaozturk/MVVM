@@ -10,7 +10,7 @@ import Foundation
 
 class MovieViewModel: ApiClient {
     
-    internal let session: URLSession
+    let session: URLSession
     var topRatedModel: MovieTopRatedModel!
     var nowPlayingModel: MovieNowPlayingModel!
     var popularModel: MoviePopularModel!
@@ -23,24 +23,9 @@ class MovieViewModel: ApiClient {
         self.init(configuration: .default)
     }
     
-    internal func getTopRatedData(completion: @escaping (MovieTopRatedModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeedTopRated(from: .movie_topRated, completion: { response in
-            switch response {
-            case .success(let successResponse):
-                self.topRatedModel = successResponse
-                completion(successResponse!)
-            case .failure(_):
-                #if DEBUG
-                print("Data Fetch Failed")
-                #endif
-                completionHandler("Error")
-            }
-        })
-    }
-    
-    private func getFeedTopRated(from endpointType: Endpoint, completion: @escaping (Result<MovieTopRatedModel?, APIError>) -> Void) {
+    func getTopRatedData(completion: @escaping (MovieTopRatedModel) -> Void, completionHandler: @escaping (String) -> Void) {
         
-        let endpoint = endpointType
+        let endpoint = Endpoint.movie_topRated
         let request = endpoint.request
         #if DEBUG
         print(request)
@@ -49,16 +34,12 @@ class MovieViewModel: ApiClient {
         fetch(with: request, decode: { json -> MovieTopRatedModel? in
             guard let feedResult = json as? MovieTopRatedModel else { return  nil }
             return feedResult
-        }, completion: completion)
-    }
-    
-    internal func getPopularData(completion: @escaping (MoviePopularModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeedPopular(from: .movie_popular, completion: { response in
+        }, completion: { [weak self] response in
+            guard let self = self else { return }
             switch response {
             case .success(let successResponse):
-                guard let results = successResponse.self else {return}
-                self.popularModel = successResponse
-                completion(results)
+                self.topRatedModel = successResponse
+                completion(successResponse)
             case .failure(_):
                 #if DEBUG
                 print("Data Fetch Failed")
@@ -67,10 +48,10 @@ class MovieViewModel: ApiClient {
             }
         })
     }
-    
-    private func getFeedPopular(from endpointType: Endpoint, completion: @escaping (Result<MoviePopularModel?, APIError>) -> Void) {
-        
-        let endpoint = endpointType
+
+    internal func getPopularData(completion: @escaping (MoviePopularModel) -> Void, completionHandler: @escaping (String) -> Void) {
+       
+        let endpoint = Endpoint.movie_popular
         let request = endpoint.request
         #if DEBUG
         print(request)
@@ -79,16 +60,12 @@ class MovieViewModel: ApiClient {
         fetch(with: request, decode: { json -> MoviePopularModel? in
             guard let feedResult = json as? MoviePopularModel else { return  nil }
             return feedResult
-        }, completion: completion)
-    }
-    
-    internal func getNowPlayingData(completion: @escaping (MovieNowPlayingModel) -> Void, completionHandler: @escaping (String) -> Void) {
-        getFeedNowPlaying(from: .movie_nowPlaying, completion: { response in
+        }, completion: { [weak self] response in
+            guard let self = self else { return }
             switch response {
             case .success(let successResponse):
-                guard let results = successResponse.self else {return}
-                self.nowPlayingModel = successResponse
-                completion(results)
+                self.popularModel = successResponse
+                completion(successResponse)
             case .failure(_):
                 #if DEBUG
                 print("Data Fetch Failed")
@@ -96,11 +73,12 @@ class MovieViewModel: ApiClient {
                 completionHandler("Error")
             }
         })
+        
     }
     
-    private func getFeedNowPlaying(from endpointType: Endpoint, completion: @escaping (Result<MovieNowPlayingModel?, APIError>) -> Void) {
+    internal func getNowPlayingData(completion: @escaping (MovieNowPlayingModel) -> Void, completionHandler: @escaping (String) -> Void) {
         
-        let endpoint = endpointType
+        let endpoint = Endpoint.movie_nowPlaying
         let request = endpoint.request
         #if DEBUG
         print(request)
@@ -109,6 +87,18 @@ class MovieViewModel: ApiClient {
         fetch(with: request, decode: { json -> MovieNowPlayingModel? in
             guard let feedResult = json as? MovieNowPlayingModel else { return  nil }
             return feedResult
-        }, completion: completion)
+        }, completion: { [weak self]response in
+            guard let self = self else { return }
+            switch response {
+            case .success(let successResponse):
+                self.nowPlayingModel = successResponse
+                completion(successResponse)
+            case .failure(_):
+                #if DEBUG
+                print("Data Fetch Failed")
+                #endif
+                completionHandler("Error")
+            }
+        })
     }
 }
