@@ -12,7 +12,7 @@ struct MovieNowPlayingModel: Decodable {
     let page, totalResults: Int
     let dates: NowPlayingDates
     let totalPages: Int
-
+    
     private enum CodingKeys: String, CodingKey {
         case results, page
         case totalResults = "total_results"
@@ -33,13 +33,12 @@ struct NowPlayingResult: Decodable {
     let id: Int
     let adult: Bool
     let backdropPath: String
-//    let originalLanguage: OriginalLanguage
     let originalTitle: String
     let genreIDS: [Int]
     let title: String
     let voteAverage: Double
     let overview, releaseDate: String
-
+    
     private enum CodingKeys: String, CodingKey {
         case popularity
         case voteCount = "vote_count"
@@ -47,7 +46,6 @@ struct NowPlayingResult: Decodable {
         case posterPath = "poster_path"
         case id, adult
         case backdropPath = "backdrop_path"
-//        case originalLanguage = "original_language"
         case originalTitle = "original_title"
         case genreIDS = "genre_ids"
         case title
@@ -56,11 +54,3 @@ struct NowPlayingResult: Decodable {
         case releaseDate = "release_date"
     }
 }
-
-//enum OriginalLanguage: String, Codable {
-//    case en = "en"
-//    case fr = "fr"
-//    case ja = "ja"
-//    case ko = "ko"
-//}
-//

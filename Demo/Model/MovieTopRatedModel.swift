@@ -10,7 +10,7 @@ import Foundation
 struct MovieTopRatedModel: Decodable {
     let page, totalResults, totalPages: Int
     let results: [TopRatedResult]
-
+    
     private enum CodingKeys: String, CodingKey {
         case page
         case totalResults = "total_results"
@@ -31,7 +31,7 @@ struct TopRatedResult: Decodable {
     let title: String
     let voteAverage: Double
     let overview, releaseDate: String
-
+    
     private enum CodingKeys: String, CodingKey {
         case popularity
         case voteCount = "vote_count"
