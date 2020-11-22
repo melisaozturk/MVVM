@@ -17,6 +17,8 @@
 		1E27723825658AF900ADCE00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E27723625658AF900ADCE00 /* LaunchScreen.storyboard */; };
 		1E27724325658AF900ADCE00 /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E27724225658AF900ADCE00 /* DemoTests.swift */; };
 		1E27724E25658AF900ADCE00 /* DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E27724D25658AF900ADCE00 /* DemoUITests.swift */; };
+		1E65C54B256ADACA009629DA /* CreditsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65C549256ADACA009629DA /* CreditsCell.swift */; };
+		1E65C54C256ADACA009629DA /* CreditsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E65C54A256ADACA009629DA /* CreditsCell.xib */; };
 		1E675CEA2569A2B9009D228F /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E675CE92569A2B9009D228F /* TabbarController.swift */; };
 		1E675CEF2569C6AF009D228F /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E675CEE2569C6AF009D228F /* ShowDetailViewController.swift */; };
 		1E8C5CB325682F91006E36C3 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8C5CB225682F91006E36C3 /* APIClient.swift */; };
@@ -80,6 +82,8 @@
 		1E27724925658AF900ADCE00 /* DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E27724D25658AF900ADCE00 /* DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUITests.swift; sourceTree = "<group>"; };
 		1E27724F25658AF900ADCE00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E65C549256ADACA009629DA /* CreditsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsCell.swift; sourceTree = "<group>"; };
+		1E65C54A256ADACA009629DA /* CreditsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsCell.xib; sourceTree = "<group>"; };
 		1E675CE92569A2B9009D228F /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		1E675CEE2569C6AF009D228F /* ShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
 		1E8C5CB225682F91006E36C3 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -217,6 +221,15 @@
 			path = DemoUITests;
 			sourceTree = "<group>";
 		};
+		1E65C548256ADA9A009629DA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1E65C549256ADACA009629DA /* CreditsCell.swift */,
+				1E65C54A256ADACA009629DA /* CreditsCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		1E8C5CB725682F97006E36C3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +307,7 @@
 		1E8C5D9925685A3C006E36C3 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				1E65C548256ADA9A009629DA /* Cell */,
 				1E675CEE2569C6AF009D228F /* ShowDetailViewController.swift */,
 			);
 			path = Detail;
@@ -439,6 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E65C54C256ADACA009629DA /* CreditsCell.xib in Resources */,
 				1E27723825658AF900ADCE00 /* LaunchScreen.storyboard in Resources */,
 				1E27723525658AF900ADCE00 /* Assets.xcassets in Resources */,
 				1E8C5DDC25686E83006E36C3 /* MovieCell.xib in Resources */,
@@ -573,6 +588,7 @@
 			files = (
 				1E8C5D5C256855C0006E36C3 /* TVViewModel.swift in Sources */,
 				1E675CEF2569C6AF009D228F /* ShowDetailViewController.swift in Sources */,
+				1E65C54B256ADACA009629DA /* CreditsCell.swift in Sources */,
 				1E0B8C9425694EC400939453 /* Loading.swift in Sources */,
 				1E8C5CCB25683A4A006E36C3 /* MovieTopRatedModel.swift in Sources */,
 				1E8C5DC225685FAE006E36C3 /* MovieCredits.swift in Sources */,
