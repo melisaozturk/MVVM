@@ -11,11 +11,11 @@ enum Endpoint {
     case movie_topRated
     case movie_nowPlaying
     case movie_popular
+    case movie_detail(Int)
+    case movie_credits(Int)
     case tv_topRated
     case tv_popular
-    case movie_detail(Int)
     case tv_detail(Int)
-    case movie_credits(Int)
     case tv_credits(Int)
 }
 
@@ -30,12 +30,12 @@ extension Endpoint: BaseEndpoint {
         case .movie_topRated: return "/3/movie/top_rated"
         case .movie_nowPlaying: return "/3/movie/now_playing"
         case .movie_popular: return "/3/movie/popular"
+        case .movie_detail(let id): return "/3/movie/\(id)"
+        case .movie_credits(let id): return "/3/movie/\(id)/credits"
         case .tv_topRated: return "/3/tv/top_rated"
         case .tv_popular: return "/3/tv/popular"
-        case .movie_detail(let id): return "/3/movie/\(id)"
         case .tv_detail(let id): return "/3/tv/\(id)"
-        case .movie_credits(let id): return "/3/movie/\(id)/credits"
-        case .tv_credits(let id): return "/3/movie/\(id)/credits"
+        case .tv_credits(let id): return "/3/tv/\(id)/credits"
         }
     }
 
