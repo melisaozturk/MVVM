@@ -123,10 +123,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnn-PR-0Xn">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1002.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1081.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fvl-d0-d5a">
-                                                <rect key="frame" x="0.0" y="421" width="414" height="581.5"/>
+                                                <rect key="frame" x="0.0" y="500" width="414" height="581.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hf-Jl-SOv">
                                                         <rect key="frame" x="10" y="10" width="394" height="21"/>
@@ -238,10 +238,10 @@
                                                     <constraint firstAttribute="trailing" secondItem="suq-9k-Yyp" secondAttribute="trailing" constant="10" id="zkj-Pb-5fN"/>
                                                 </constraints>
                                             </view>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jtS-5b-Giw">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="421"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jtS-5b-Giw">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="421" id="7mL-xy-1Jd"/>
+                                                    <constraint firstAttribute="height" constant="500" id="7mL-xy-1Jd"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
