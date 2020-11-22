@@ -17,7 +17,7 @@ class TVViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableRegister()
+        self.registerTable()
         self.getData()
     }
     
@@ -26,7 +26,7 @@ class TVViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    private func tableRegister() {
+    private func registerTable() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
