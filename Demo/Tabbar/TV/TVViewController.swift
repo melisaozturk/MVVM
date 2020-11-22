@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 class TVViewController: UIViewController {
-
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
@@ -18,7 +18,24 @@ class TVViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableRegister()
-
+        self.getData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    private func tableRegister() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.separatorStyle = .none
+        self.tableView.separatorStyle = .none
+        
+        self.tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
+    }
+    
+    private func getData() {
         UIManager.shared().showLoading(view: self.view)
         self.viewModel.getTVTopRatedData(completion: { [weak self] response in
             UIManager.shared().removeLoading(view: self!.view)
@@ -42,20 +59,6 @@ class TVViewController: UIViewController {
                 UIManager.shared().tabbarErrorHandle(viewController: self!, message: "Bir hata oluştu.")
             }
         })
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    private func tableRegister() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.separatorStyle = .none
-        self.tableView.separatorStyle = .none
-        
-        self.tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
     }
     
     @IBAction func actionSegmentedControl(_ sender: UISegmentedControl) {
@@ -115,7 +118,7 @@ extension TVViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var id: Int!
-
+        
         switch self.segmentedControl.selectedSegmentIndex {
         case 0:
             id = self.viewModel.tvTopRatedModel.results![indexPath.row].id
@@ -125,7 +128,7 @@ extension TVViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
-                
+        
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShowDetailViewController") as? ShowDetailViewController {
             viewController.id = id
             viewController.pageSource = .tv

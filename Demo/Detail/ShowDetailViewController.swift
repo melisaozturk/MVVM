@@ -24,10 +24,17 @@ class ShowDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.getData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    private func getData() {
         switch pageSource {
         case .movie:
-            UIManager.shared().showLoading(view: self.view)
             self.movieViewModel.getMovieDetailData(id: self.id, completion: { [weak self] response in
                 UIManager.shared().removeLoading(view: self!.view)
                 if let _ = self {
@@ -43,13 +50,10 @@ class ShowDetailViewController: UIViewController {
             
             UIManager.shared().showLoading(view: self.view)
             self.movieViewModel.getMovieCreditsData(id: self.id, completion: { [weak self] response in
-                UIManager.shared().removeLoading(view: self!.view)
                 if let _ = self {
+                    UIManager.shared().removeLoading(view: self!.view)
                 }
-            }, completionHandler: { [weak self] error in
-                if let _ = self {
-
-                }
+            }, completionHandler: { _ in
             })
         case .tv:
             UIManager.shared().showLoading(view: self.view)
@@ -68,23 +72,13 @@ class ShowDetailViewController: UIViewController {
             
             UIManager.shared().showLoading(view: self.view)
             self.tvViewModel.getTVCreditsData(id: self.id, completion: { [weak self] response in
-                UIManager.shared().removeLoading(view: self!.view)
                 if let _ = self {
+                    UIManager.shared().removeLoading(view: self!.view)
                 }
-            }, completionHandler: { [weak self] error in
-                if let _ = self {
-                }
+            }, completionHandler: { _ in
             })
         default:
             break
         }
-        
-      
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
 }

@@ -38,7 +38,7 @@ extension Endpoint: BaseEndpoint {
         case .tv_credits(let id): return "/3/tv/\(id)/credits"
         }
     }
-
+    
     var query: [URLQueryItem] {
         switch self {
         case .movie_topRated, .movie_nowPlaying, .movie_popular, .tv_topRated, .tv_popular:

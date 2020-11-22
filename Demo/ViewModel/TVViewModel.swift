@@ -8,7 +8,7 @@
 import Foundation
 
 class TVViewModel: ApiClient {
-            
+    
     internal let session: URLSession
     var tvTopRatedModel: TVTopRatedModel!
     var tvPopularModel: TVPopularModel!
@@ -34,6 +34,7 @@ class TVViewModel: ApiClient {
             return feedResult
         }, completion: { [weak self] response in
             guard let self = self else { return }
+            
             switch response {
             case .success(let successResponse):
                 self.tvTopRatedModel = successResponse
@@ -60,6 +61,7 @@ class TVViewModel: ApiClient {
             return feedResult
         }, completion: { [weak self] response in
             guard let self = self else { return }
+            
             switch response {
             case .success(let successResponse):
                 self.tvPopularModel = successResponse

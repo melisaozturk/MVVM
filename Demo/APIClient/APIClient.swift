@@ -8,7 +8,6 @@
 import Foundation
 
 enum APIError: Swift.Error {
-
     case requestFailed
     case jsonConversionFailure
     case invalidData
@@ -28,14 +27,12 @@ enum APIError: Swift.Error {
 
 
 protocol ApiClient {
-    
     var session: URLSession { get }
     func fetch<T: Decodable>(with request: URLRequest, decode: @escaping (Decodable) -> T?, completion: @escaping (Result<T, APIError>) -> Void)
     
 }
 
 extension ApiClient {
-    
     typealias JSONTaskCompletionHandler = (Decodable?, APIError?) -> Void
     
     private func decodingTask<T: Decodable>(with request: URLRequest, decodingType: T.Type, completionHandler completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
@@ -49,7 +46,7 @@ extension ApiClient {
             if httpResponse.statusCode == 200 {
                 if let data = data {
                     do {
-//                        self.log(data)
+                        //                        self.log(data)
                         let genericModel = try JSONDecoder().decode(decodingType, from: data)
                         completion(genericModel, nil)
                     } catch {

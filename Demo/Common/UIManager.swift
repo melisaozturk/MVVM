@@ -15,7 +15,7 @@ protocol UIManagerDelegate {
 
 class UIManager: UIManagerDelegate {
     
-    let loading = Loading()
+    private let loading = Loading()
     private static var sharedInstance: UIManager?
     
     public class func shared() -> UIManager {

@@ -34,6 +34,7 @@ class MovieDetailViewModel: ApiClient {
             return feedResult
         }, completion: { [weak self] response in
             guard let self = self else { return }
+            
             switch response {
             case .success(let successResponse):
                 self.movieDetailModel = successResponse
@@ -48,7 +49,7 @@ class MovieDetailViewModel: ApiClient {
     }
     
     internal func getMovieCreditsData(id: Int, completion: @escaping (MovieCreditsModel) -> Void, completionHandler: @escaping (String) -> Void) {
-    
+        
         let endpoint = Endpoint.movie_credits(id)
         let request = endpoint.request
         #if DEBUG
@@ -60,6 +61,7 @@ class MovieDetailViewModel: ApiClient {
             return feedResult
         }, completion: { [weak self] response in
             guard let self = self else { return }
+            
             switch response {
             case .success(let successResponse):
                 self.movieCreditsModel = successResponse

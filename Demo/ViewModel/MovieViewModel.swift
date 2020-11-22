@@ -7,14 +7,13 @@
 
 import Foundation
 
-
 class MovieViewModel: ApiClient {
     
     let session: URLSession
     var topRatedModel: MovieTopRatedModel!
     var nowPlayingModel: MovieNowPlayingModel!
     var popularModel: MoviePopularModel!
-
+    
     init(configuration: URLSessionConfiguration) {
         self.session = URLSession(configuration: configuration)
     }
@@ -36,6 +35,7 @@ class MovieViewModel: ApiClient {
             return feedResult
         }, completion: { [weak self] response in
             guard let self = self else { return }
+            
             switch response {
             case .success(let successResponse):
                 self.topRatedModel = successResponse
@@ -48,9 +48,9 @@ class MovieViewModel: ApiClient {
             }
         })
     }
-
+    
     internal func getPopularData(completion: @escaping (MoviePopularModel) -> Void, completionHandler: @escaping (String) -> Void) {
-       
+        
         let endpoint = Endpoint.movie_popular
         let request = endpoint.request
         #if DEBUG
@@ -62,6 +62,7 @@ class MovieViewModel: ApiClient {
             return feedResult
         }, completion: { [weak self] response in
             guard let self = self else { return }
+            
             switch response {
             case .success(let successResponse):
                 self.popularModel = successResponse
@@ -89,6 +90,7 @@ class MovieViewModel: ApiClient {
             return feedResult
         }, completion: { [weak self]response in
             guard let self = self else { return }
+            
             switch response {
             case .success(let successResponse):
                 self.nowPlayingModel = successResponse
