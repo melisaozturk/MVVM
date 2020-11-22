@@ -9,7 +9,7 @@ import Foundation
 
 class TVViewModel: ApiClient {
     
-    internal let session: URLSession
+    let session: URLSession
     var tvTopRatedModel: TVTopRatedModel!
     var tvPopularModel: TVPopularModel!
     
@@ -21,7 +21,7 @@ class TVViewModel: ApiClient {
         self.init(configuration: .default)
     }
     
-    internal func getTVTopRatedData(completion: @escaping (TVTopRatedModel) -> Void, completionHandler: @escaping (String) -> Void) {
+    func getTVTopRatedData(completion: @escaping (TVTopRatedModel) -> Void, completionHandler: @escaping (String) -> Void) {
         
         let endpoint = Endpoint.tv_topRated
         let request = endpoint.request
@@ -48,7 +48,7 @@ class TVViewModel: ApiClient {
         })
     }
     
-    internal func getTVTPopularData(completion: @escaping (TVPopularModel) -> Void, completionHandler: @escaping (String) -> Void) {
+    func getTVTPopularData(completion: @escaping (TVPopularModel) -> Void, completionHandler: @escaping (String) -> Void) {
         
         let endpoint = Endpoint.tv_popular
         let request = endpoint.request

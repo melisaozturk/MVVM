@@ -21,7 +21,7 @@ class TVDetailViewModel: ApiClient {
         self.init(configuration: .default)
     }
     
-    internal func getTVDetailData(id: Int, completion: @escaping (TVDetailModel) -> Void, completionHandler: @escaping (String) -> Void) {
+    func getTVDetailData(id: Int, completion: @escaping (TVDetailModel) -> Void, completionHandler: @escaping (String) -> Void) {
         
         let endpoint = Endpoint.tv_detail(id)
         let request = endpoint.request
@@ -48,7 +48,7 @@ class TVDetailViewModel: ApiClient {
         })
     }
     
-    internal func getTVCreditsData(id: Int, completion: @escaping (TVCreditsModel) -> Void, completionHandler: @escaping (String) -> Void) {
+    func getTVCreditsData(id: Int, completion: @escaping (TVCreditsModel) -> Void, completionHandler: @escaping (String) -> Void) {
         
         let endpoint = Endpoint.tv_credits(id)
         let request = endpoint.request

@@ -16,12 +16,12 @@ class ShowDetailViewController: UIViewController {
     
     @IBOutlet weak private var imgMovie: UIImageView!
     @IBOutlet weak private var lblTitle: UILabel!
-    @IBOutlet weak var lblRatingText: UILabel!
+    @IBOutlet weak private var lblRatingText: UILabel!
     @IBOutlet weak private var lblRating: UILabel!
     @IBOutlet weak private var lblPopularity: UILabel!
-    @IBOutlet weak var lblPopularityText: UILabel!
+    @IBOutlet weak private var lblPopularityText: UILabel!
     @IBOutlet weak private var lblRuntime: UILabel!
-    @IBOutlet weak var lblRuntimeText: UILabel!
+    @IBOutlet weak private var lblRuntimeText: UILabel!
     @IBOutlet weak private var textViewOverview: UITextView!
     @IBOutlet weak private var collectionView: UICollectionView!
     
@@ -108,8 +108,8 @@ class ShowDetailViewController: UIViewController {
             
             UIManager.shared().showLoading(view: self.view)
             self.tvViewModel.getTVCreditsData(id: self.id, completion: { [weak self] response in
+                UIManager.shared().removeLoading(view: self!.view)
                 if let _ = self {
-                    UIManager.shared().removeLoading(view: self!.view)
                     self!.collectionView.reloadData()
                 }
             }, completionHandler: { _ in

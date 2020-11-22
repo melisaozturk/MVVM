@@ -19,7 +19,7 @@ class SplashViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    @objc func showView(){
+    @objc private func showView(){
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabbarController") as? TabbarController {
             self.navigationController?.pushViewController(viewController, animated: true)
         }

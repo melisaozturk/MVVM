@@ -9,7 +9,7 @@ import Foundation
 
 class MovieDetailViewModel: ApiClient {
     
-    internal let session: URLSession
+    let session: URLSession
     var movieDetailModel: MovieDetailModel!
     var movieCreditsModel: MovieCreditsModel!
     
@@ -21,7 +21,7 @@ class MovieDetailViewModel: ApiClient {
         self.init(configuration: .default)
     }
     
-    internal func getMovieDetailData(id: Int, completion: @escaping (MovieDetailModel) -> Void, completionHandler: @escaping (String) -> Void) {
+    func getMovieDetailData(id: Int, completion: @escaping (MovieDetailModel) -> Void, completionHandler: @escaping (String) -> Void) {
         
         let endpoint = Endpoint.movie_detail(id)
         let request = endpoint.request
@@ -48,7 +48,7 @@ class MovieDetailViewModel: ApiClient {
         })
     }
     
-    internal func getMovieCreditsData(id: Int, completion: @escaping (MovieCreditsModel) -> Void, completionHandler: @escaping (String) -> Void) {
+    func getMovieCreditsData(id: Int, completion: @escaping (MovieCreditsModel) -> Void, completionHandler: @escaping (String) -> Void) {
         
         let endpoint = Endpoint.movie_credits(id)
         let request = endpoint.request

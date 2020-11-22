@@ -49,7 +49,7 @@ class MovieViewModel: ApiClient {
         })
     }
     
-    internal func getPopularData(completion: @escaping (MoviePopularModel) -> Void, completionHandler: @escaping (String) -> Void) {
+    func getPopularData(completion: @escaping (MoviePopularModel) -> Void, completionHandler: @escaping (String) -> Void) {
         
         let endpoint = Endpoint.movie_popular
         let request = endpoint.request
@@ -77,7 +77,7 @@ class MovieViewModel: ApiClient {
         
     }
     
-    internal func getNowPlayingData(completion: @escaping (MovieNowPlayingModel) -> Void, completionHandler: @escaping (String) -> Void) {
+    func getNowPlayingData(completion: @escaping (MovieNowPlayingModel) -> Void, completionHandler: @escaping (String) -> Void) {
         
         let endpoint = Endpoint.movie_nowPlaying
         let request = endpoint.request
@@ -88,7 +88,7 @@ class MovieViewModel: ApiClient {
         fetch(with: request, decode: { json -> MovieNowPlayingModel? in
             guard let feedResult = json as? MovieNowPlayingModel else { return  nil }
             return feedResult
-        }, completion: { [weak self]response in
+        }, completion: { [weak self] response in
             guard let self = self else { return }
             
             switch response {
