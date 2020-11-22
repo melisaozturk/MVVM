@@ -35,6 +35,7 @@ class TVViewController: UIViewController {
         self.tableView.register(UINib(nibName: "ShowCell", bundle: nil), forCellReuseIdentifier: "ShowCell")
     }
     
+//     MARK: Service Call
     private func getData() {
         UIManager.shared().showLoading(view: self.view)
         self.viewModel.getTVTopRatedData(completion: { [weak self] response in

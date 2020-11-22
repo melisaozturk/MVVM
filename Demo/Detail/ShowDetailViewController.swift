@@ -55,6 +55,7 @@ class ShowDetailViewController: UIViewController {
         self.lblRuntimeText.text = "Runtime"
     }
     
+//     MARK: Service Call
     private func getData() {
         switch pageSource {
         case .movie:
