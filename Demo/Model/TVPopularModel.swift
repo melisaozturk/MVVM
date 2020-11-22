@@ -22,13 +22,13 @@ struct TVPopularModel: Decodable {
 struct TVPopularResult: Decodable {
     let originalName: String
     let genreIDS: [Int]
-    let name: String
+    let name: String?
     let popularity: Double
     let voteCount: Int
-    let firstAirDate: String
+    let firstAirDate: String?
     let backdropPath: String?
     let id: Int
-    let voteAverage: Double
+    let voteAverage: Double?
     let overview, posterPath: String
     
     private enum CodingKeys: String, CodingKey {

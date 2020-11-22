@@ -16,6 +16,10 @@ class ShowDetailViewController: UIViewController {
     
     @IBOutlet weak var imgMovie: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblRating: UILabel!
+    @IBOutlet weak var lblPopularity: UILabel!
+    @IBOutlet weak var lblRuntime: UILabel!
+    @IBOutlet weak var textViewOverview: UITextView!
     
     private let movieViewModel = MovieDetailViewModel()
     private let tvViewModel = TVDetailViewModel()
@@ -38,9 +42,15 @@ class ShowDetailViewController: UIViewController {
             self.movieViewModel.getMovieDetailData(id: self.id, completion: { [weak self] response in
                 UIManager.shared().removeLoading(view: self!.view)
                 if let _ = self {
-                    self!.lblTitle.text = self!.movieViewModel.movieDetailModel.title
-                    let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self!.movieViewModel.movieDetailModel.posterPath!)")
-                    self!.imgMovie.kf.setImage(with: url)
+                    if let movieDetailModel = self!.movieViewModel.movieDetailModel {
+                        let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self!.movieViewModel.movieDetailModel.posterPath!)")
+                        self!.imgMovie.kf.setImage(with: url)
+                        self!.lblTitle.text = movieDetailModel.title
+                        self!.lblRating.text = String(movieDetailModel.voteAverage ?? 0)
+                        self!.lblPopularity.text = String(movieDetailModel.voteCount ?? 0)
+                        self!.lblRuntime.text = String(movieDetailModel.runtime ?? 0) + "min"
+                        self!.textViewOverview.text = movieDetailModel.overview ?? ""
+                    }
                 }
             }, completionHandler: { [weak self] error in
                 if let _ = self {
@@ -60,9 +70,13 @@ class ShowDetailViewController: UIViewController {
             self.tvViewModel.getTVDetailData(id: self.id, completion: { [weak self] response in
                 UIManager.shared().removeLoading(view: self!.view)
                 if let _ = self {
-                    self!.lblTitle.text = self!.tvViewModel.tvDetailModel.name
                     let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self!.tvViewModel.tvDetailModel.posterPath!)")
                     self!.imgMovie.kf.setImage(with: url)
+                    self!.lblTitle.text = self!.tvViewModel.tvDetailModel.name
+                    self!.lblRating.text = String(self!.tvViewModel.tvDetailModel.voteAverage ?? 0)
+                    self!.lblPopularity.text = String(self!.tvViewModel.tvDetailModel.voteCount ?? 0)
+                    self!.lblRuntime.text = String(self!.tvViewModel.tvDetailModel.episodeRunTime?[0] ?? 0) + "min"
+                    self!.textViewOverview.text = self!.tvViewModel.tvDetailModel.overview ?? ""
                 }
             }, completionHandler: { [weak self] error in
                 if let _ = self {

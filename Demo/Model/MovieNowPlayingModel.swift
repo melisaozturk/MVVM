@@ -35,9 +35,9 @@ struct NowPlayingResult: Decodable {
     let backdropPath: String
     let originalTitle: String
     let genreIDS: [Int]
-    let title: String
-    let voteAverage: Double
-    let overview, releaseDate: String
+    let title: String?
+    let voteAverage: Double?
+    let overview, releaseDate: String?
     
     private enum CodingKeys: String, CodingKey {
         case popularity

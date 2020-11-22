@@ -117,22 +117,22 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.viewModel.topRatedModel.results[indexPath.row].posterPath)")
             cell.imgShow.kf.setImage(with: url)
-            cell.lblTitle.text = self.viewModel.topRatedModel.results[indexPath.row].title
-            cell.lblReleaseDate.text = self.viewModel.topRatedModel.results[indexPath.row].releaseDate
-            cell.lblVoteAverage.text = String(self.viewModel.topRatedModel.results[indexPath.row].voteAverage)
+            cell.lblTitle.text = self.viewModel.topRatedModel.results[indexPath.row].title ?? ""
+            cell.lblReleaseDate.text = self.viewModel.topRatedModel.results[indexPath.row].releaseDate ?? ""
+            cell.lblVoteAverage.text = String(self.viewModel.topRatedModel.results[indexPath.row].voteAverage ?? 0.0)
             break
         case 1:
             let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.viewModel.nowPlayingModel.results[indexPath.row].posterPath)")
             cell.imgShow.kf.setImage(with: url)
-            cell.lblTitle.text = self.viewModel.nowPlayingModel.results[indexPath.row].title
-            cell.lblReleaseDate.text = self.viewModel.nowPlayingModel.results[indexPath.row].releaseDate
-            cell.lblVoteAverage.text = String(self.viewModel.nowPlayingModel.results[indexPath.row].voteAverage)
+            cell.lblTitle.text = self.viewModel.nowPlayingModel.results[indexPath.row].title ?? ""
+            cell.lblReleaseDate.text = self.viewModel.nowPlayingModel.results[indexPath.row].releaseDate ?? ""
+            cell.lblVoteAverage.text = String(self.viewModel.nowPlayingModel.results[indexPath.row].voteAverage ?? 0.0)
         case 2:
             let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.viewModel.popularModel.results[indexPath.row].posterPath)")
             cell.imgShow.kf.setImage(with: url)
-            cell.lblTitle.text = self.viewModel.popularModel.results[indexPath.row].title
-            cell.lblReleaseDate.text = self.viewModel.popularModel.results[indexPath.row].releaseDate
-            cell.lblVoteAverage.text = String(self.viewModel.popularModel.results[indexPath.row].voteAverage)
+            cell.lblTitle.text = self.viewModel.popularModel.results[indexPath.row].title ?? ""
+            cell.lblReleaseDate.text = self.viewModel.popularModel.results[indexPath.row].releaseDate ?? ""
+            cell.lblVoteAverage.text = String(self.viewModel.popularModel.results[indexPath.row].voteAverage ?? 0.0)
         default:
             break
         }

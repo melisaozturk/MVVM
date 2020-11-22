@@ -101,19 +101,18 @@ extension TVViewController: UITableViewDelegate, UITableViewDataSource {
             if let results = self.viewModel.tvTopRatedModel.results {
                 let url = URL(string: "http://image.tmdb.org/t/p/w500//\(results[indexPath.row].posterPath)")
                 cell.imgShow.kf.setImage(with: url)
-                cell.lblTitle.text = results[indexPath.row].name
-                cell.lblReleaseDate.text = results[indexPath.row].firstAirDate
-                cell.lblVoteAverage.text = String(results[indexPath.row].voteAverage)
-
+                cell.lblTitle.text = results[indexPath.row].name ?? ""
+                cell.lblReleaseDate.text = results[indexPath.row].firstAirDate ?? ""
+                cell.lblVoteAverage.text = String(results[indexPath.row].voteAverage ?? 0.0)
             }
             break
         case 1:
             if let results = self.viewModel.tvPopularModel.results {
                 let url = URL(string: "http://image.tmdb.org/t/p/w500//\(results[indexPath.row].posterPath)")
                 cell.imgShow.kf.setImage(with: url)
-                cell.lblTitle.text = results[indexPath.row].name
-                cell.lblReleaseDate.text = results[indexPath.row].firstAirDate
-                cell.lblVoteAverage.text = String(results[indexPath.row].voteAverage)
+                cell.lblTitle.text = results[indexPath.row].name ?? ""
+                cell.lblReleaseDate.text = results[indexPath.row].firstAirDate ?? ""
+                cell.lblVoteAverage.text = String(results[indexPath.row].voteAverage ?? 0.0)
             }
         default:
             break
