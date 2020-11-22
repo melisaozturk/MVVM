@@ -14,13 +14,16 @@ class ShowDetailViewController: UIViewController {
         case tv
     }
     
-    @IBOutlet weak var imgMovie: UIImageView!
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var lblRating: UILabel!
-    @IBOutlet weak var lblPopularity: UILabel!
-    @IBOutlet weak var lblRuntime: UILabel!
-    @IBOutlet weak var textViewOverview: UITextView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak private var imgMovie: UIImageView!
+    @IBOutlet weak private var lblTitle: UILabel!
+    @IBOutlet weak var lblRatingText: UILabel!
+    @IBOutlet weak private var lblRating: UILabel!
+    @IBOutlet weak private var lblPopularity: UILabel!
+    @IBOutlet weak var lblPopularityText: UILabel!
+    @IBOutlet weak private var lblRuntime: UILabel!
+    @IBOutlet weak var lblRuntimeText: UILabel!
+    @IBOutlet weak private var textViewOverview: UITextView!
+    @IBOutlet weak private var collectionView: UICollectionView!
     
     private let movieViewModel = MovieDetailViewModel()
     private let tvViewModel = TVDetailViewModel()
@@ -30,6 +33,7 @@ class ShowDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerCollection()
+        self.setup()
         self.getData()
     }
     
@@ -43,6 +47,12 @@ class ShowDetailViewController: UIViewController {
         self.collectionView.dataSource = self
         
         collectionView.register(UINib(nibName: "CreditsCell", bundle: nil), forCellWithReuseIdentifier: "CreditsCell")
+    }
+    
+    private func setup() {
+        self.lblRatingText.text = "Rating"
+        self.lblPopularityText.text = "Popularity"
+        self.lblRuntimeText.text = "Runtime"
     }
     
     private func getData() {

@@ -10,8 +10,8 @@ import Kingfisher
 
 class MovieViewController: UIViewController {
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var segmentedControl: UISegmentedControl!
+    @IBOutlet weak private var tableView: UITableView!
     
     private let viewModel = MovieViewModel()
     
