@@ -115,18 +115,24 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch self.segmentedControl.selectedSegmentIndex {
         case 0:
-            cell.lblTitle.text = self.viewModel.topRatedModel.results[indexPath.row].title
             let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.viewModel.topRatedModel.results[indexPath.row].posterPath)")
             cell.imgShow.kf.setImage(with: url)
+            cell.lblTitle.text = self.viewModel.topRatedModel.results[indexPath.row].title
+            cell.lblReleaseDate.text = self.viewModel.topRatedModel.results[indexPath.row].releaseDate
+            cell.lblVoteAverage.text = String(self.viewModel.topRatedModel.results[indexPath.row].voteAverage)
             break
         case 1:
-            cell.lblTitle.text = self.viewModel.nowPlayingModel.results[indexPath.row].title
             let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.viewModel.nowPlayingModel.results[indexPath.row].posterPath)")
             cell.imgShow.kf.setImage(with: url)
+            cell.lblTitle.text = self.viewModel.nowPlayingModel.results[indexPath.row].title
+            cell.lblReleaseDate.text = self.viewModel.nowPlayingModel.results[indexPath.row].releaseDate
+            cell.lblVoteAverage.text = String(self.viewModel.nowPlayingModel.results[indexPath.row].voteAverage)
         case 2:
-            cell.lblTitle.text = self.viewModel.popularModel.results[indexPath.row].title
             let url = URL(string: "http://image.tmdb.org/t/p/w500//\(self.viewModel.popularModel.results[indexPath.row].posterPath)")
             cell.imgShow.kf.setImage(with: url)
+            cell.lblTitle.text = self.viewModel.popularModel.results[indexPath.row].title
+            cell.lblReleaseDate.text = self.viewModel.popularModel.results[indexPath.row].releaseDate
+            cell.lblVoteAverage.text = String(self.viewModel.popularModel.results[indexPath.row].voteAverage)
         default:
             break
         }

@@ -46,7 +46,7 @@ extension ApiClient {
             if httpResponse.statusCode == 200 {
                 if let data = data {
                     do {
-                        //                        self.log(data)
+                        self.log(data)
                         let genericModel = try JSONDecoder().decode(decodingType, from: data)
                         completion(genericModel, nil)
                     } catch {

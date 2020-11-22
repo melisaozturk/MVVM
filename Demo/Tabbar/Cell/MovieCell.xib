@@ -21,10 +21,28 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IIW-oK-51g">
                         <rect key="frame" x="10" y="10" width="415" height="135"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2O-4B-tOg">
-                                <rect key="frame" x="125" y="5" width="280" height="125"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2O-4B-tOg">
+                                <rect key="frame" x="125" y="5" width="280" height="73"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="DN0-No-sJf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Tc-ia-llm">
+                                <rect key="frame" x="125" y="83" width="285" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="gut-9H-FCn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Tm-PA-g5u">
+                                <rect key="frame" x="125" y="109" width="285" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="WEd-AG-2Lo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                 <nil key="textColor"/>
@@ -39,13 +57,21 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4Tc-ia-llm" secondAttribute="trailing" constant="5" id="9D6-Yb-wEN"/>
+                            <constraint firstItem="9Tm-PA-g5u" firstAttribute="top" secondItem="4Tc-ia-llm" secondAttribute="bottom" constant="5" id="CE7-Km-Gva"/>
+                            <constraint firstItem="9Tm-PA-g5u" firstAttribute="top" secondItem="4Tc-ia-llm" secondAttribute="bottom" constant="5" id="Dkj-9d-1hd"/>
                             <constraint firstItem="z2O-4B-tOg" firstAttribute="top" secondItem="IIW-oK-51g" secondAttribute="top" constant="5" id="TEQ-QG-B5F"/>
+                            <constraint firstItem="4Tc-ia-llm" firstAttribute="leading" secondItem="CRs-bu-dbA" secondAttribute="trailing" constant="5" id="UEf-cC-2cP"/>
+                            <constraint firstItem="9Tm-PA-g5u" firstAttribute="leading" secondItem="CRs-bu-dbA" secondAttribute="trailing" constant="5" id="UyB-2k-JaO"/>
+                            <constraint firstItem="4Tc-ia-llm" firstAttribute="top" secondItem="z2O-4B-tOg" secondAttribute="bottom" constant="5" id="WAc-dO-ZnO"/>
                             <constraint firstItem="z2O-4B-tOg" firstAttribute="leading" secondItem="CRs-bu-dbA" secondAttribute="trailing" constant="5" id="X68-Yu-s3L"/>
                             <constraint firstAttribute="bottom" secondItem="CRs-bu-dbA" secondAttribute="bottom" id="X9X-Sm-Fy9"/>
                             <constraint firstItem="CRs-bu-dbA" firstAttribute="top" secondItem="IIW-oK-51g" secondAttribute="top" id="ZHJ-ee-fa3"/>
-                            <constraint firstAttribute="bottom" secondItem="z2O-4B-tOg" secondAttribute="bottom" constant="5" id="drG-4e-GHS"/>
+                            <constraint firstAttribute="bottom" secondItem="9Tm-PA-g5u" secondAttribute="bottom" constant="5" id="buy-XA-Ls7"/>
+                            <constraint firstAttribute="trailing" secondItem="9Tm-PA-g5u" secondAttribute="trailing" constant="5" id="che-9G-VbA"/>
                             <constraint firstItem="CRs-bu-dbA" firstAttribute="leading" secondItem="IIW-oK-51g" secondAttribute="leading" id="eza-AQ-yVz"/>
                             <constraint firstAttribute="trailing" secondItem="z2O-4B-tOg" secondAttribute="trailing" constant="10" id="m9L-gi-oWs"/>
+                            <constraint firstAttribute="trailing" secondItem="9Tm-PA-g5u" secondAttribute="trailing" constant="5" id="xJf-hS-jkn"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -59,7 +85,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="imgShow" destination="CRs-bu-dbA" id="get-4C-3dh"/>
+                <outlet property="lblReleaseDate" destination="4Tc-ia-llm" id="xmO-F1-HDC"/>
                 <outlet property="lblTitle" destination="z2O-4B-tOg" id="yBb-Gl-LBN"/>
+                <outlet property="lblVoteAverage" destination="9Tm-PA-g5u" id="cpt-2v-YHK"/>
                 <outlet property="viewContent" destination="IIW-oK-51g" id="BHl-jR-AVl"/>
             </connections>
             <point key="canvasLocation" x="221.01449275362322" y="138.61607142857142"/>

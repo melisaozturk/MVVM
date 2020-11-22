@@ -99,16 +99,21 @@ extension TVViewController: UITableViewDelegate, UITableViewDataSource {
         switch self.segmentedControl.selectedSegmentIndex {
         case 0:
             if let results = self.viewModel.tvTopRatedModel.results {
-                cell.lblTitle.text = results[indexPath.row].name
                 let url = URL(string: "http://image.tmdb.org/t/p/w500//\(results[indexPath.row].posterPath)")
                 cell.imgShow.kf.setImage(with: url)
+                cell.lblTitle.text = results[indexPath.row].name
+                cell.lblReleaseDate.text = results[indexPath.row].firstAirDate
+                cell.lblVoteAverage.text = String(results[indexPath.row].voteAverage)
+
             }
             break
         case 1:
             if let results = self.viewModel.tvPopularModel.results {
-                cell.lblTitle.text = results[indexPath.row].name
                 let url = URL(string: "http://image.tmdb.org/t/p/w500//\(results[indexPath.row].posterPath)")
                 cell.imgShow.kf.setImage(with: url)
+                cell.lblTitle.text = results[indexPath.row].name
+                cell.lblReleaseDate.text = results[indexPath.row].firstAirDate
+                cell.lblVoteAverage.text = String(results[indexPath.row].voteAverage)
             }
         default:
             break
